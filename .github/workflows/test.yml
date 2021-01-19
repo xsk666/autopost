@@ -2,8 +2,8 @@ name: test
 
 on:
   gollum:
-   schedule:
-       - cron: '1 19 * * *'
+  schedule:
+       - cron: '10 19 * * *'
 
 
 jobs:
