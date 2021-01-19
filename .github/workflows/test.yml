@@ -3,7 +3,7 @@ name: test
 on:
   gollum:
    schedule:
-       - cron: '1 16 * * *'
+       - cron: '1 19 * * *'
 
 
 jobs:
