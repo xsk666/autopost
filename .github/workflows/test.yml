@@ -16,6 +16,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: 安装requests
+      run: |
+        pip install requests
     - name: info test
       run: |
         python test.py
