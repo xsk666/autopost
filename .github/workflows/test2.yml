@@ -2,7 +2,7 @@ name: test2
 
 on:
   schedule:
-  - cron: '*/15 * * * *'
+  - cron: '0,15,30,45 * * * *'
   push:
     branches: [ master ]
 jobs:
