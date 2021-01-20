@@ -1,12 +1,10 @@
 name: test2
 
 on:
+  schedule:
+  - cron: '*/5 * * * *'
   push:
     branches: [ master ]
-  schedule:
-  - cron: '*/15 * * * *'
-
-
 jobs:
   build:
 
