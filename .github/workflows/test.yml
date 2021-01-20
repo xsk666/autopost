@@ -1,8 +1,10 @@
 name: test
 
 on:
+  push:
+    branches: [ master ]
   schedule:
-  - cron: '30 * * * *'
+  - cron: '1 16 * * *'
 
 
 jobs:
@@ -18,7 +20,7 @@ jobs:
         python-version: 3.9
     - name: 安装requests
       run: |
-        pip install requests
-    - name: info test
+        python -m pip install requests
+    - name: 运行test.py
       run: |
         python test.py
