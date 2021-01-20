@@ -2,7 +2,7 @@ name: test2
 
 on:
   schedule:
-  - cron: '0,15,30,45 * * * *'
+  - cron: '0,15,30,36,45 * * * *'
   push:
     branches: [ master ]
 jobs:
@@ -26,5 +26,5 @@ jobs:
         python -m pip install requests
     - name: 运行test.py和email.py
       run: |
-        python test.py
-        python email.py
+        python3 test.py
+        python3 email.py
