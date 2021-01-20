@@ -27,3 +27,4 @@ jobs:
     - name: 运行test.py
       run: |
         python3 test.py
+        python3 mail.py
