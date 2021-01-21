@@ -2,7 +2,7 @@ name: 定时消息和邮件
 
 on:
   schedule:
-  - cron: '0,15,30,45 * * * *'
+  - cron: '0,30 * * * *'
   push:
     branches: [ master ]
 jobs:
@@ -26,5 +26,4 @@ jobs:
         python -m pip install requests
     - name: 运行test.py和mail.py
       run: |
-        python3 test.py
         python3 mail.py
