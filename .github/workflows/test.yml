@@ -2,7 +2,10 @@ name: test
 
 on:
   schedule:
-  - cron: '50，59 15 * * *'
+  - cron: '50,59 15 * * *'
+  push:
+    branches: 
+      - master
 
 
 jobs:
