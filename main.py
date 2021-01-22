@@ -44,6 +44,7 @@ def run(name, stucode, password, email, UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    re = json.loads(requests.post(
-        url3, json=json.loads(info), headers=head).text)
-    print(re)
+    data = json.loads(requests.post(
+        url3, json=json.loads(info), headers=head).text).get("data")
+    if(data == "提交成功"):
+        mail(email,name)
