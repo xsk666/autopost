@@ -45,6 +45,8 @@ def run(name, stucode, password, email, UA, cook):
         'Cookie': cook,
     }
     data = json.loads(requests.post(
-        url3, json=json.loads(info), headers=head).text).get("data")
-    if(data == "提交成功"):
-        mail(email,name)
+        url3, json=json.loads(info), headers=head).text)
+    if(data.get("data") == "提交成功"):
+        mail(email, name)
+    else if(data.get("errmsg") == "不能重复回答同一问卷"):
+        print("今日打卡已完成，自动打卡取消")
