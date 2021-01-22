@@ -2,7 +2,7 @@ name: 定时消息和邮件
 
 on:
   schedule:
-  - cron: '0,30 * * * *'
+  - cron: '1 * * * *'
   push:
     branches: [ master ]
 jobs:
@@ -11,11 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 更新为中国时间
-      run: |
-        sudo rm -rf /etc/localtime 
-        sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-        date
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
