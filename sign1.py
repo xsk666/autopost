@@ -3,6 +3,9 @@ import json
 import time
 import requests
 import mail
+# 若sign失效则启用sign1
+# 此登录 时间较长故暂时弃用
+# 但此登录绝对稳定可用
 
 
 def login(stucode, password, UA):
@@ -10,13 +13,13 @@ def login(stucode, password, UA):
 
     api = 'api.weishao.com.cn'
     hapi = 'https://api.weishao.com.cn'
-    # 分析协议得出的
-    oauth = '/oauth/authorize?client_id=pqZ3wGM07i8R9mR3&redirect_uri=https%3A%2F%2Fyq.weishao.com.cn%2Fcheck%2Fquestionnaire&response_type=code&scope=base_api&state=ruijie'
 
-    # 直接获取登陆链接的cookie（该链接极大可能是固定的）
-    url = hapi + "/login?source=" + oauth
+    # 从url开始，进行两次302跳转获取初始cookie和真正的登陆链接
+    url = 'https://yq.weishao.com.cn/check/questionnaire'
+    url2 = requests.get(url, allow_redirects=False).headers['Location']
+    response = requests.get(url2, allow_redirects=False)
     # 得到初始cookie
-    cook = requests.get(url).headers['set-cookie']
+    cook = response.headers['set-cookie']
     # 提交的个人数据
     dat = "schoolcode=chzu&username="+stucode+"&password=" + \
         password+"&verifyValue=&verifyKey="+stucode+"_chzu&ssokey="
@@ -35,8 +38,10 @@ def login(stucode, password, UA):
         'Cookie': cook,
     }
 
-    requests.post(url, data=dat, headers=head1)
-    url4 = hapi + oauth
+    url3 = hapi + response.headers['Location']
+    response = requests.post(url3, data=dat, headers=head1, allow_redirects=False)
+    url4 = hapi + response.headers['Location']
+
     head2 = {
         'Host': api,
         'Cache-Control': 'max-age=0',
@@ -49,8 +54,8 @@ def login(stucode, password, UA):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    # 提交个人信息
-    url5 = requests.get(url4, headers=head2, allow_redirects=False).headers['Location']
+    response = requests.get(url4, headers=head2, allow_redirects=False)
+    url5 = response.headers['Location']
     head3 = {
         'Host': api,
         'Cache-Control': 'max-age=0',
@@ -62,6 +67,7 @@ def login(stucode, password, UA):
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN, zh;q = 0.9',
     }
+    response = requests.get(url5, headers=head3, allow_redirects=False)
     # 登陆成功，获取登陆cookie
-    cook = requests.get(url5, headers=head3, allow_redirects=False).headers['set-cookie']
+    cook = response.headers['set-cookie']
     return cook
