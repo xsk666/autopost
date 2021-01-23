@@ -2,11 +2,12 @@
 import smtplib
 import time
 import requests
+import json
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
 
-def mail(mail, username):
+def send(mail, username):
     # 发送到的邮箱地址，收件人的名称
     try:
         sender = '3104182180@qq.com'  # 发件人邮箱账号

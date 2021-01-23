@@ -1,6 +1,8 @@
 # coding=utf-8
 import requests
 import json
+import mail
+
 # 定义一些东西
 api = 'api.weishao.com.cn'
 
@@ -48,6 +50,6 @@ def run(name, stucode, password, email, UA, cook):
         url3, json=json.loads(info), headers=head).text)
     if(data.get("data") == "提交成功"):
         print("打卡成功")
-        mail.mail(email, name)
-    if(data.get("errmsg") == "不能重复回答同一问卷"):
+        mail.send(email, name)
+    elif(data.get("errmsg") == "不能重复回答同一问卷"):
         print("今日打卡已完成，自动打卡取消")
