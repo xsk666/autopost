@@ -70,16 +70,23 @@ def data(UA, cook):
     for i in range(0, len(type1)):
         que = ques()
         opt = type1[i].get("option_list")
-        for ii in range(0, len(opt)):
-            if (str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid")):
-                que['questionid'] = opt[ii].get("questionid")
-                que["optionid"] = str(opt[ii].get("optionid"))
-                que['optiontitle'] = opt[ii].get("title")
-                que["question_type"] = type1[i].get("question_type")
-                que["answerid"] = type1[i].get("answerid")
-                que["answered"] = str(type1[i].get("user_answer_this_question"))
-                questions.append(que)
-                break
+
+        if (str(type1[i].get("user_answer_this_question")) == 'False'):
+            que['questionid'] = type1[i].get("questionid")
+            que["question_type"] = type1[i].get("question_type")
+            que["hide"] = "true"
+            que["answered"] = "false"
+        else:
+            for ii in range(0, len(opt)):
+                if (str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid")):
+                    que['questionid'] = opt[ii].get("questionid")
+                    que["optionid"] = str(opt[ii].get("optionid"))
+                    que['optiontitle'] = opt[ii].get("title")
+                    que["question_type"] = type1[i].get("question_type")
+                    que["answered"] = str(type1[i].get("user_answer_this_question"))
+                    que["answerid"] = type1[i].get("answerid")
+                    break
+        questions.append(que)
 
     for i in range(0, len(type3)):
         que = ques()
@@ -160,5 +167,5 @@ def data(UA, cook):
         "repeat_range": '1',
         "question_data": questionsok,
         "totalArr": questions,
-        "private_id": '0'
+        "private_id": private,
     }
