@@ -24,7 +24,6 @@ que = {
     "isanswered": 'true',
     "answerid": '0',
     "answered": 'true'
-
 }
 for i in range(0, len(data)):
     # 1：选择题
@@ -63,7 +62,7 @@ for i in range(0, len(type3)):
     que['question_type'] = type3[i].get("question_type")
     que['content'] = type3[i].get("user_answer_content")
     questions.append(que)
-    
+
 for i in range(0, len(type7)):
     que['questionid'] = type7[i].get("questionid")
     que['content'] = type3[i].get("user_answer_content")
