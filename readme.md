@@ -10,11 +10,12 @@
 为了这个项目我花了很多时间学习  
 恳请各位大佬给个 ***star***  
 ***fork*** 后修改[`users.json`](/main/users.json)  
-然后开启[`github action`](https://github.com/xsk666/autopost/action)就可以使用啦  
+然后开启[`github action`](https://github.com/xsk666/autopost/actions)就可以使用啦  
 
 
 ## 使用范围  
-此项目可用于200+所高校的每日打卡   
+此项目可用于200+所高校的每日打卡  
+但需要修改一些文件。（现可以在滁州学院使用） 
 具体校园列表请看[`学校列表.txt`](/学校列表.txt)   
 此学校列表由此得来-><https://api.weishao.com.cn/login/api/school>
   
