@@ -4,8 +4,7 @@ import sign
 import requests
 
 
-def data(stucode, password, UA):
-    cook = sign.login(stucode, password, UA)
+def data(stucode, password, UA, cook):
     # 获取昨天的打卡信息
     url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=chzu&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
     head = {
@@ -39,10 +38,8 @@ def data(stucode, password, UA):
         # 7：定位
         # 8：填空题（不在校，所在省市）
         # 9：滑动选择题（返回时间）
-
         num = data[i].get("question_type")
         if (num == 1):
-            print(data[i].get('questionid'))
             type1.append(data[i])
         elif (num == 3):
             type3.append(data[i])
@@ -129,7 +126,6 @@ def data(stucode, password, UA):
         questions[i] = temp
 
     for i in range(0, len(questions)):
-
         if (str(questions[i].get('answered')) == "True"):
             questions[i]["isanswered"] = "true"
             questionsok.append(questions[i])
@@ -160,12 +156,3 @@ def data(stucode, password, UA):
         "totalArr": questions,
         "private_id": '0'
     }
-
-
-UA = 'Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
-
-a = data("2020211760", "xu20021016", UA)
-f = open("./ok.json", 'w', encoding='utf-8')
-json.dump(a, f, ensure_ascii=False)
-f.close()
-print('ok')

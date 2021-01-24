@@ -2,7 +2,7 @@
 import requests
 import json
 import mail
-
+import getinfo
 # 定义一些东西
 api = 'api.weishao.com.cn'
 
@@ -27,9 +27,7 @@ def run(name, stucode, password, email, UA, cook):
     # 提交今日打卡
     url3 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/addMyAnswer'
     # 读取个人提交信息
-    f = open("./data.txt", 'r', encoding='utf-8')
-    info = f.read()
-    f.close()
+    info = getinfo.data(stucode, password, UA, cook)
     head1 = {
         'Host': 'yq.weishao.com.cn',
         'Connection': 'keep-alive',
@@ -46,8 +44,7 @@ def run(name, stucode, password, email, UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    data = json.loads(requests.post(
-        url3, json=json.loads(info), headers=head).text)
+    data = json.loads(requests.post(url3, json=info, headers=head).text)
     if(data.get("data") == "提交成功"):
         print("打卡成功")
         mail.send(email, name)
