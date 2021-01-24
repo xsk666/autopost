@@ -4,7 +4,6 @@ f = open(os.getcwd()+"/data/xsk.json", "r", encoding="utf-8")
 data=json.loads(f.read()).get("data").get("question_list")
 f.close()
 for i in range(0,len(data)):
-    
     opt = data[i].get("option_list")
     for ii in range(0, len(opt)):
         if (str(opt[ii].get("optionid")) == data[i].get("user_answer_optionid")):

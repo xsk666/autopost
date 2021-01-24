@@ -20,7 +20,6 @@ head4 = {
     'Cookie': cook,
 }
 # 获取身份信息
-# 没用。。无用代码
 #response = requests.get("https://yq.weishao.com.cn/userInfo", headers=head4)
 # print(response.text)
 #
