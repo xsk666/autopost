@@ -1,5 +1,6 @@
 #coding=utf-8
-import json
+import json, os
+
 f = open("./data/xsk.json", 'r', encoding='utf-8')
 info = json.loads(f.read()).get("data").get("question_list")
 f.close()

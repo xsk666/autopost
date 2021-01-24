@@ -1,6 +1,6 @@
 # coding=utf-8
-import json
-f = open("./data/tzc.json", "r", encoding="utf-8")
+import json,os
+f = open(os.getcwd()+"/data/xsk.json", "r", encoding="utf-8")
 data=json.loads(f.read()).get("data").get("question_list")
 f.close()
 for i in range(0,len(data)):
