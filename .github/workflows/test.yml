@@ -24,4 +24,4 @@ jobs:
         python -m pip install requests
     - name: 运行index.py
       run: |
-        python index.py
+        python test.py
