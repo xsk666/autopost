@@ -5,7 +5,8 @@
 这也是我用`python`写的第一个项目   
 并将它放在`github action`上每日自动运行  
 这也是我第一次使用`git`  
-第一次编写文档   
+第一次编写文档
+我选择了`Markdown`   
 为了这个项目我花了很多时间学习  
 恳请各位大佬给个 ***star***  
 ***fork*** 后修改[`users.json`]("https://github.com/xsk666/autopost/main/users.json")  
