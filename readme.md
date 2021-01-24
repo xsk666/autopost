@@ -10,7 +10,7 @@
 为了这个项目我花了很多时间学习  
 恳请各位大佬给个 ***star***  
 ***fork*** 后修改[`users.json`](/main/users.json)  
-然后开启`github action`就可以使用啦  
+然后开启[`github action`]("https://github.com/xsk666/autopost/action")就可以使用啦  
 
 
 ## 使用范围  

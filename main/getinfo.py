@@ -76,6 +76,7 @@ def data(UA, cook):
                 que["optionid"] = str(opt[ii].get("optionid"))
                 que['optiontitle'] = opt[ii].get("title")
                 que["question_type"] = type1[i].get("question_type")
+                que["answerid"] = type1[i].get("answerid")
                 que["answered"] = str(type1[i].get("user_answer_this_question"))
                 questions.append(que)
                 break
@@ -86,6 +87,7 @@ def data(UA, cook):
         que['question_type'] = type3[i].get("question_type")
         que['content'] = type3[i].get("user_answer_content")
         que["answered"] = str(type3[i].get("user_answer_this_question"))
+        que["answerid"] = type3[i].get("answerid")
         questions.append(que)
 
     for i in range(0, len(type7)):
@@ -94,6 +96,7 @@ def data(UA, cook):
         que['content'] = type7[i].get("user_answer_content")
         que['question_type'] = type7[i].get("question_type")
         que["answered"] = str(type7[i].get("user_answer_this_question"))
+        que["answerid"] = type7[i].get("answerid")
         questions.append(que)
 
     for i in range(0, len(type8)):
@@ -104,6 +107,7 @@ def data(UA, cook):
         que['answered'] = type8[i].get("user_answer_this_question")
         que['hide'] = "true"
         que["answered"] = str(type8[i].get("user_answer_this_question"))
+        que["answerid"] = type8[i].get("answerid")
         questions.append(que)
 
     for i in range(0, len(type9)):
@@ -112,6 +116,7 @@ def data(UA, cook):
         que['question_type'] = type9[i].get("question_type")
         que['content'] = type9[i].get("user_answer_content")
         que['answered'] = type9[i].get("user_answer_this_question")
+        que["answerid"] = type9[i].get("answerid")
         que['hide'] = "true"
         que["answered"] = str(type9[i].get("user_answer_this_question"))
         questions.append(que)
