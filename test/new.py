@@ -10,21 +10,7 @@ type3 = []
 type7 = []
 type8 = []
 type9 = []
-que = {
-    "questionid": '0',
-    "optionid": "0",
-    "optiontitle": "",
-    "question_sort": '0',
-    "question_type": '1',
-    "option_sort": '0',
-    "range_value": "",
-    "content": "",
-    "isotheroption": '0',
-    "otheroption_content": "",
-    "isanswered": 'true',
-    "answerid": '0',
-    "answered": 'true'
-}
+
 for i in range(0, len(data)):
     # 1：选择题
     # 3：填空题
@@ -45,6 +31,21 @@ for i in range(0, len(data)):
 
 for i in range(0, len(type1)):
     #print(str(type1[i]) + "\n")
+    que = {
+        "questionid": '0',
+        "optionid": "0",
+        "optiontitle": "",
+        "question_sort": '0',
+        "question_type": '1',
+        "option_sort": '0',
+        "range_value": "",
+        "content": "",
+        "isotheroption": '0',
+        "otheroption_content": "",
+        "isanswered": 'true',
+        "answerid": '0',
+        "answered": 'true'
+    }
     opt = type1[i].get("option_list")
     for ii in range(0, len(opt)):
         if (str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid")):
@@ -58,18 +59,65 @@ for i in range(0, len(type1)):
             break
 
 for i in range(0, len(type3)):
+    que = {
+        "questionid": '0',
+        "optionid": "0",
+        "optiontitle": "",
+        "question_sort": '0',
+        "question_type": '1',
+        "option_sort": '0',
+        "range_value": "",
+        "content": "",
+        "isotheroption": '0',
+        "otheroption_content": "",
+        "isanswered": 'true',
+        "answerid": '0',
+        "answered": 'true'
+    }
     que['questionid'] = type3[i].get("questionid")
     que['question_type'] = type3[i].get("question_type")
     que['content'] = type3[i].get("user_answer_content")
     questions.append(que)
 
 for i in range(0, len(type7)):
-    que['questionid'] = type7[i].get("questionid")
+    que = {
+        "questionid": '0',
+        "optionid": "0",
+        "optiontitle": "",
+        "question_sort": '0',
+        "question_type": '1',
+        "option_sort": '0',
+        "range_value": "",
+        "content": "",
+        "isotheroption": '0',
+        "otheroption_content": "",
+        "isanswered": 'true',
+        "answerid": '0',
+        "answered": 'true'
+    }
+    
+    que['questionid'] = type3[i].get("questionid")
     que['content'] = type3[i].get("user_answer_content")
     que['question_type'] = type3[i].get("question_type")
     questions.append(que)
     
 for i in range(0, len(type8)):
+    que = {
+        "questionid": '0',
+        "optionid": "0",
+        "optiontitle": "",
+        "question_sort": '0',
+        "question_type": '1',
+        "option_sort": '0',
+        "range_value": "",
+        "content": "",
+        "isotheroption": '0',
+        "otheroption_content": "",
+        "isanswered": 'true',
+        "answerid": '0',
+        "answered": 'true'
+    }
+    que['questionid'] = type8[i].get("questionid")
     que['question_type'] = type8[i].get("question_type")
     que['answered'] = str(type8[i].get("user_answer_this_question"))
     que['hide'] = "true"
@@ -77,11 +125,35 @@ for i in range(0, len(type8)):
     questions.append(que)
 
 for i in range(0, len(type9)):
+    que = {
+        "questionid": '0',
+        "optionid": "0",
+        "optiontitle": "",
+        "question_sort": '0',
+        "question_type": '1',
+        "option_sort": '0',
+        "range_value": "",
+        "content": "",
+        "isotheroption": '0',
+        "otheroption_content": "",
+        "isanswered": 'true',
+        "answerid": '0',
+        "answered": 'true'
+    }
+    que['questionid'] = type9[i].get("questionid")
     que['question_type'] = type9[i].get("question_type")
     que['answered'] = str(type9[i].get("user_answer_this_question"))
     que['hide'] = "true"
     que['isanswered'] = ""
     questions.append(que)
+#选择排序法
 
-for i in range(0, len(questions)):
-    print(str(questions[i])+"\n")
+for i in range(0, len(questions)-1):
+    n = i
+    for j in range(i + 1, len(questions)):
+        if (int(questions[n].get('questionid')) > int(questions[j].get("questionid"))):
+            n = j
+    temp = questions[n]
+    questions[n] = questions[i]
+    questions[i] = temp
+    print(str(questions[i].get("questionid"))+"\n")
