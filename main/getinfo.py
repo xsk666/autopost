@@ -24,7 +24,7 @@ def data(stucode, password, UA, cook):
     # 下面开始处理昨天的记录
     # questions记录全部（包括未填写
     questions = []
-    # questionsok记录填写的题目
+    # questionsok记录昨天填写的题目
     questionsok = []
     type1 = []
     type3 = []

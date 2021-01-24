@@ -23,7 +23,7 @@ def send(mail, username):
         # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.sendmail(sender, [mail, ], msg.as_string())
         server.quit()  # 关闭连接
-        print("给"+username+"的邮件发送成功")
+        print("给"+username+"的邮件发送成功\n")
     except Exception:
         print("给"+username+"的邮件发送失败")
         if(wechat('邮件发送失败', '用户邮箱:'+mail) == "success"):
@@ -31,6 +31,6 @@ def send(mail, username):
 
 
 def wechat(text, desp):
-    # 标题，具体内容
+    # 若邮件发送出错 则联系开发者
     return json.loads(requests.get('https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text='+text+'&desp='+desp+'\n时间：' +
                                    str(time.asctime(time.localtime(time.time())))).text).get("errmsg")
