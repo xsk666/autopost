@@ -2,7 +2,7 @@ name: test
 
 on:
   schedule:
-  - cron: '40,49 15 * * *'
+  - cron: '45 15 * * *'
   push:
     branches: [ master ]
       
@@ -27,4 +27,4 @@ jobs:
         python -m pip install requests
     - name: 运行index.py
       run: |
-        python test.py
+        python ./main/index.py
