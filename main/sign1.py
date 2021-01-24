@@ -7,7 +7,9 @@ import requests
 # 但此登录绝对稳定可用
 
 
-def login(stucode, password, UA):
+def login(user, UA):
+    stucode = user.get("stucode")
+    password = user.get("password")
     # 学号，密码，UA
 
     api = 'api.weishao.com.cn'

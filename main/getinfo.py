@@ -4,7 +4,8 @@ import sign
 import requests
 
 
-def data(stucode, password, UA, cook):
+def data(UA, cook):
+    # 只需要得到cookie即可获取信息
     # 获取昨天的打卡信息
     url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=chzu&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
     head = {
