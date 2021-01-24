@@ -7,14 +7,15 @@
 这也是我第一次使用`git`  
 第一次编写文档   
 为了这个项目我花了很多时间学习  
-恳请各位大佬给个star  
-`fork`后修改[`users.json`]("https://github.com/xsk666/autopost/users.json")  
+恳请各位大佬给个 ***star***  
+***fork*** 后修改[`users.json`]("https://github.com/xsk666/autopost/users.json")  
 然后开启`github action`就可以使用啦  
 
 
 ## 使用范围  
 此项目可用于200+所高校的每日打卡   
-具体校园列表请看[`学校.txt`]("https://github.com/xsk666/autopost/blob/master/学校.txt")  
+具体校园列表请看[`学校列表.txt`]("https://github.com/xsk666/autopost/blob/master/学校列表.txt")  
+此学校列表由此得来->[`链接`]("https://api.weishao.com.cn/login/api/school")   
 (只要是基于`微哨`的应该都可以)
 
 ## 项目构成  
