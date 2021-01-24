@@ -165,6 +165,6 @@ UA = 'Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (KHTML, like G
 
 a = data("2020211760", "xu20021016", UA)
 f = open("./ok.json", 'w', encoding='utf-8')
-json.dump(a, f, ensure_ascii=False)
+#json.dump(a, f, ensure_ascii=False)
 f.close()
 print('ok')
