@@ -8,7 +8,7 @@ import random
 f2 = open("./users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
-for i in range(0, 1):
+for i in range(0, 3):
     # 获取用户cookie
     stucode = info[i].get("stucode")
     password = info[i].get("password")

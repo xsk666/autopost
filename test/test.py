@@ -39,7 +39,6 @@ def data(stucode, password, UA):
         # 7：定位
         # 8：填空题（不在校，所在省市）
         # 9：滑动选择题（返回时间）
-
         num = data[i].get("question_type")
         if (num == 1):
             print(data[i].get('questionid'))
