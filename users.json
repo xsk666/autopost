@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
     {
         "name": "xsk",
@@ -18,25 +17,4 @@
         "password": "190011",
         "email": ""
     }
-=======
-[
-    {
-        "name": "xsk",
-        "stucode": "2020211760",
-        "password": "xu20021016",
-        "email": "3104182180@qq.com"
-    },
-    {
-        "name": "rcy",
-        "stucode": "2020211738",
-        "password": "214818",
-        "email": ""
-    },
-    {
-        "name": "tzc",
-        "stucode": "2020211899",
-        "password": "190011",
-        "email": ""
-    }
->>>>>>> 4a5e7e120a5cbe4505cbb1818de324b158bf0d02
 ]
