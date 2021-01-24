@@ -18,7 +18,6 @@ def data(UA, cook):
         'Cookie': cook,
     }
     private = json.loads(requests.get(url1, headers=head).text).get("data")[0]['private_id']
-    print(private)
     url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=5416&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着昨天的打卡记录
     data = json.loads(requests.get(url2, headers=head).text).get("data").get("question_list")
