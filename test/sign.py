@@ -17,8 +17,8 @@ def login(stucode, password, UA):
     # 得到初始cookie
     cook = requests.get(url).headers['set-cookie']
     # 提交的个人数据
-    dat = "schoolcode=chzu&username="+stucode+"&password=" + \
-        password+"&verifyValue=&verifyKey="+stucode+"_chzu&ssokey="
+    dat = "schoolcode=chzu&username="+str(stucode)+"&password=" + \
+        str(password)+"&verifyValue=&verifyKey="+str(stucode)+"_chzu&ssokey="
     # 头部要携带提交的数据的长度
     head1 = {
         'Host': api,

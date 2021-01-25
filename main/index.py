@@ -6,14 +6,8 @@ import random
 import os
 import requests
 import time
-f = open(os.getcwd() + "/main/day.txt", 'r', encoding="utf-8")
 print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务")
-if (f.read() == time.strftime("%Y/%m/%d")):
-    print("今日打卡已完成！无需再次执行")
-    f.close()
-    os._exit(0)
-
-requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 "+time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+#requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 "+time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 # 读取用户列表
 f2 = open(os.getcwd()+"/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
@@ -30,6 +24,3 @@ for i in range(0, len(info)):
     cook = sign.login(info[i], UA)
     main.run(info[i], UA, cook)
 print("打卡结束")
-f = open(os.getcwd() + "/main/day.txt", 'w', encoding="utf-8")
-f.write(time.strftime("%Y/%m/%d"))
-f.close()
