@@ -164,7 +164,7 @@ def data(stucode, password, UA):
 UA = 'Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
 
 a = data("2020211760", "xu20021016", UA)
-f = open("./ok.json", 'w', encoding='utf-8')
+#f = open("./ok.json", 'w', encoding='utf-8')
 #json.dump(a, f, ensure_ascii=False)
-f.close()
+# f.close()
 print('ok')
