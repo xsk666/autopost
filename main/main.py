@@ -1,8 +1,8 @@
 # coding=utf-8
 import requests
 import json
-import mail
-import getinfo
+from . import mail
+from . import getinfo
 
 
 def run(user, UA, cook):

@@ -1,7 +1,7 @@
 # coding=utf-8
 import json
 import requests
-import sign
+from . import sign
 
 def data(UA, cook):
     """
