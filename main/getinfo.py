@@ -22,8 +22,10 @@ def data(UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    private = json.loads(requests.get(url1, headers=head).text).get("data")[0]['private_id']
-    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=5599&can_repeat=1&page_from=my&private_id=' + private
+    info = json.loads(requests.get(url1, headers=head).text).get("data")[0]
+    private = info['private_id']
+    activityid=str(info["activityid"])
+    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid='+activityid+'&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着昨天的打卡记录
     data = json.loads(requests.get(url2, headers=head).text).get("data")
     true = data.get('already_answered')  # 存放true
@@ -186,7 +188,7 @@ def data(UA, cook):
         "path": userinfo.get("path"),
         "organization": userinfo.get("organization"),
         "gender": userinfo.get("gender"),
-        "activityid": "5599",
+        "activityid": activityid,
         "anonymous": 0,
         "canrepeat": 1,
         "repeat_range": 1,
