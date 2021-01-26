@@ -5,8 +5,7 @@ on:
     - cron: '45 15 * * *'
   repository_dispatch:
     types: test
-  push:
-    branches: [ master ]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
