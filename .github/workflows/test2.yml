@@ -1,13 +1,12 @@
 name: 更新day.txt
 
-
 on:
   schedule:
     - cron: '45 15 * * *'
   repository_dispatch:
-    types: update_list
-  #push:
-  #  branches: [ master ]
+    types: test
+  push:
+    branches: [ master ]
 jobs:
   build:
     runs-on: ubuntu-latest
