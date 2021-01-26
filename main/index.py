@@ -7,7 +7,7 @@ import sys
 import requests
 import time
 import sign
-print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务")
+print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务\n")
 
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if (files.read() == time.strftime("%Y/%m/%d")):
@@ -20,18 +20,19 @@ f2 = open(os.getcwd()+"/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
 for i in range(0, len(info)):
-    print("开始为 "+info[i].get("name") + " 打卡...")
-    # 随机UA
-    f = open(os.getcwd()+"/main/ua.txt", 'r', encoding='utf-8')
-    a = f.read().split("\n")
-    UA = a[random.randint(0, len(a)-1)]
-    f.close()
-    # 获取用户cookie
-    cook = sign.login(info[i], UA)
-    try:
-        main.run(info[i], UA, cook)
-    except Exception:
-        print("为 "+info[i].get("name")+" 打卡失败")
+    if(info[i].get("enable")=='true'):
+        print("开始为 "+info[i].get("name") + " 打卡...")
+        # 随机UA
+        f = open(os.getcwd()+"/main/ua.txt", 'r', encoding='utf-8')
+        a = f.read().split("\n")
+        UA = a[random.randint(0, len(a)-1)]
+        f.close()
+        # 获取用户cookie
+        cook = sign.login(info[i], UA)
+        try:
+            main.run(info[i], UA, cook)
+        except Exception:
+            print("为 " + info[i].get("name") + " 打卡失败")
 
 print("打卡结束")
 # 回到文件头部，清除重写

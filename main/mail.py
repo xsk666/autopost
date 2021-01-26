@@ -24,9 +24,9 @@ def send(mail, username):
         # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.sendmail(sender, [mail, ], msg.as_string())
         server.quit()  # 关闭连接
-        print("给"+username+"的邮件发送成功\n")
+        print("给 "+username+" 的邮件发送成功")
     except Exception:
-        print("给"+username+"的邮件发送失败")
+        print("给 "+username+" 的邮件发送失败")
         if(wechat('邮件发送失败', '用户邮箱:'+mail) == "success"):
             print("已通知开发者")
 

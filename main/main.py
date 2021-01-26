@@ -37,7 +37,6 @@ def run(user, UA, cook):
         'Cookie': cook,
     }
     data = json.loads(requests.post(url3, json=info, headers=head).text)
-    print("服务器消息："+data.get("errmsg"))
     if(data.get("data") == "提交成功"):
         print("打卡成功！")
         if (user.get("notice") == "true"):
