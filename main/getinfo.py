@@ -1,7 +1,7 @@
 # coding=utf-8
 import json
 import requests
-from . import sign
+
 
 def data(UA, cook):
     """
@@ -11,21 +11,24 @@ def data(UA, cook):
     :return:处理后的数据
     """
     # 只需要得到cookie即可获取信息
-    # 获取昨天的打卡信息
+    # 获取 昨天/最新 的打卡信息
     url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=chzu&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
     head = {
         'Host': 'yq.weishao.com.cn',
         'User-Agent': UA,
         'Accept': '*/*',
-        'Referer': 'https://yq.weishao.com.cn/questionnaire/addanswer?page_from=onpublic&activityid=5416&can_repeat=1',
+        'Referer': 'https://yq.weishao.com.cn/questionnaire/my/',
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
     private = json.loads(requests.get(url1, headers=head).text).get("data")[0]['private_id']
-    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=5416&can_repeat=1&page_from=my&private_id=' + private
+    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=5599&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着昨天的打卡记录
-    data = json.loads(requests.get(url2, headers=head).text).get("data").get("question_list")
+    data = json.loads(requests.get(url2, headers=head).text).get("data")
+    true = data.get('already_answered')  # 存放true
+    false = data.get("can_reanswer")  # 存放false
+    data = data.get("question_list")
     # 但服务器返回的数据并不是真正提交的数据，需要处理
     # 下面开始处理昨天的记录
     # questions记录全部（包括未填写
@@ -34,6 +37,7 @@ def data(UA, cook):
     questionsok = []
     type1 = []
     type3 = []
+    type4 = []
     type7 = []
     type8 = []
     type9 = []
@@ -49,6 +53,8 @@ def data(UA, cook):
             type1.append(data[i])
         elif (num == 3):
             type3.append(data[i])
+        elif (num == 4):
+            type4.append(data[i])
         elif (num == 7):
             type7.append(data[i])
         elif (num == 8):
@@ -70,6 +76,7 @@ def data(UA, cook):
             "otheroption_content": "",
             "isanswered": "",
             "answerid": 0,
+            "hide": false,
             "answered": ''
         }
     for i in range(0, len(type1)):
@@ -79,18 +86,19 @@ def data(UA, cook):
         if (str(type1[i].get("user_answer_this_question")) == 'False'):
             que['questionid'] = type1[i].get("questionid")
             que["question_type"] = type1[i].get("question_type")
-            que["hide"] = "true"
-            que["answered"] = "false"
+
         else:
             for ii in range(0, len(opt)):
                 if (str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid")):
                     que['questionid'] = opt[ii].get("questionid")
-                    que["optionid"] = str(opt[ii].get("optionid"))
+                    que["optionid"] = opt[ii].get("optionid")
                     que['optiontitle'] = opt[ii].get("title")
                     que["question_type"] = type1[i].get("question_type")
-                    que["answered"] = str(type1[i].get("user_answer_this_question"))
-                    que["answerid"] = type1[i].get("answerid")
+                    #que["answerid"] = type1[i].get("answerid")
                     break
+        que["answered"] = type1[i].get("user_answer_this_question")
+        if(que["answered"] == false):
+            que["hide"] = true
         questions.append(que)
 
     for i in range(0, len(type3)):
@@ -98,8 +106,19 @@ def data(UA, cook):
         que['questionid'] = type3[i].get("questionid")
         que['question_type'] = type3[i].get("question_type")
         que['content'] = type3[i].get("user_answer_content")
-        que["answered"] = str(type3[i].get("user_answer_this_question"))
-        que["answerid"] = type3[i].get("answerid")
+        que["answered"] = type3[i].get("user_answer_this_question")
+        que["hide"] = true
+        questions.append(que)
+
+    for i in range(0, len(type4)):
+        que = ques()
+        que['questionid'] = type4[i].get("questionid")
+        que['question_type'] = type4[i].get("question_type")
+        que['content'] = type4[i].get("user_answer_content")
+        que["answered"] = type4[i].get("user_answer_this_question")
+        #que["answerid"] = type4[i].get("answerid")
+        if(que["answered"] == false):
+            que["hide"] = true
         questions.append(que)
 
     for i in range(0, len(type7)):
@@ -107,8 +126,9 @@ def data(UA, cook):
         que['questionid'] = type7[i].get("questionid")
         que['content'] = type7[i].get("user_answer_content")
         que['question_type'] = type7[i].get("question_type")
-        que["answered"] = str(type7[i].get("user_answer_this_question"))
-        que["answerid"] = type7[i].get("answerid")
+        que["answered"] = type7[i].get("user_answer_this_question")
+        #que["answerid"] = type7[i].get("answerid")
+
         questions.append(que)
 
     for i in range(0, len(type8)):
@@ -117,9 +137,8 @@ def data(UA, cook):
         que['content'] = type8[i].get("user_answer_content")
         que['question_type'] = type8[i].get("question_type")
         que['answered'] = type8[i].get("user_answer_this_question")
-        que['hide'] = "true"
-        que["answered"] = str(type8[i].get("user_answer_this_question"))
-        que["answerid"] = type8[i].get("answerid")
+        que["hide"] = true
+        #que["answerid"] = type8[i].get("answerid")
         questions.append(que)
 
     for i in range(0, len(type9)):
@@ -128,9 +147,8 @@ def data(UA, cook):
         que['question_type'] = type9[i].get("question_type")
         que['content'] = type9[i].get("user_answer_content")
         que['answered'] = type9[i].get("user_answer_this_question")
-        que["answerid"] = type9[i].get("answerid")
-        que['hide'] = "true"
-        que["answered"] = str(type9[i].get("user_answer_this_question"))
+        #que["answerid"] = type9[i].get("answerid")
+        que["hide"] = true
         questions.append(que)
 
     # 选择排序法
@@ -144,8 +162,10 @@ def data(UA, cook):
         questions[i] = temp
 
     for i in range(0, len(questions)):
+        if (questions[i].get("questionid") == 61838):
+            del questions[i]["hide"]
         if (str(questions[i].get('answered')) == "True"):
-            questions[i]["isanswered"] = "true"
+            questions[i]["isanswered"] = true
             questionsok.append(questions[i])
 
     head4 = {
@@ -166,11 +186,11 @@ def data(UA, cook):
         "path": userinfo.get("path"),
         "organization": userinfo.get("organization"),
         "gender": userinfo.get("gender"),
-        "activityid": "5416",
-        "anonymous": '0',
-        "canrepeat": '1',
-        "repeat_range": '1',
+        "activityid": "5599",
+        "anonymous": 0,
+        "canrepeat": 1,
+        "repeat_range": 1,
         "question_data": questionsok,
         "totalArr": questions,
-        "private_id": private,
+        "private_id": 0
     }
