@@ -10,8 +10,6 @@ import sign
 print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务")
 
 files = open(os.getcwd() + "/main/day.txt", 'r+')
-print(files.read() == time.strftime("%Y/%m/%d"))
-
 if (files.read() == time.strftime("%Y/%m/%d")):
     print("今日已打卡")
     sys.exit()
