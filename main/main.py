@@ -37,10 +37,12 @@ def run(user, UA, cook):
         'Cookie': cook,
     }
     data = json.loads(requests.post(url3, json=info, headers=head).text)
+    print(data.get("errmsg"))
     if(data.get("data") == "提交成功"):
         print("打卡成功！")
         if (user.get("notice") == "true"):
             print("正在发送邮件···")
             mail.send(user.get("email"), user.get("name"))
-    elif(data.get("errmsg") == "不能重复回答同一问卷"):
+
+    elif(data.get("errcode") == 500):
         print("今日打卡已完成，自动打卡取消\n")
