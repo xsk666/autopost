@@ -5,7 +5,7 @@ import random
 import os
 import requests
 import time
-from . import sign
+import sign
 print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务")
 #requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 "+time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 # 读取用户列表
@@ -22,5 +22,8 @@ for i in range(0, len(info)):
     f.close()
     # 获取用户cookie
     cook = sign.login(info[i], UA)
-    main.run(info[i], UA, cook)
+    try:
+        main.run(info[i], UA, cook)
+    except Exception:
+        print("为 "+info[i].get("name")+" 打卡失败")
 print("打卡结束")

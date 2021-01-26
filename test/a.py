@@ -4,7 +4,7 @@ import sign
 import getinfo
 user = {
     "name": "xsk",
-    "stucode": "2020211760",
+    "stucode": "20202118760",
     "password": "xu20021016",
     "email": "3104182180@qq.com",
     "notice": "true"
