@@ -1,0 +1,46 @@
+name: 更新day.txt
+
+
+on:
+  schedule:
+    - cron: '45 15 * * *'
+  push:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 更新为中国时间
+        run: |
+          sudo rm -rf /etc/localtime 
+          sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          date
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: 安装requests
+        run: |
+          python -m pip install requests
+      - name: 运行index.py
+        run: |
+          python ./main/index.py
+
+      - name: commit
+        run: |
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name xsk666
+          git add .
+          git commit -m "今日 by xsk666 Github Actions" -a || echo "day update"
+      - name: 推送day.txt
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
