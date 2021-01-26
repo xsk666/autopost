@@ -4,7 +4,9 @@ name: 更新day.txt
 on:
   schedule:
     - cron: '45 15 * * *'
-      
+  push:
+    branches: [ master ]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
