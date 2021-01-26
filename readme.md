@@ -3,14 +3,14 @@
 这是我第一次使用编写自动打卡的脚本  
 我选择了`python`  
 这也是我用`python`写的第一个项目   
-并将它放在`github action`上每日自动运行  
+并将它放在`github actions`上每日自动运行  
 这也是我第一次使用`git`  
 第一次编写文档
 我选择了`Markdown`   
 为了这个项目我花了很多时间学习  
 恳请各位大佬给个 ***star***  
 ***fork*** 后修改[`users.json`](/main/users.json)  
-然后开启[`github action`](https://github.com/xsk666/autopost/actions)就可以使用啦  
+然后开启[`github actions`](https://github.com/xsk666/autopost/actions)就可以使用啦  
 
 
 ## 使用范围  
@@ -36,5 +36,5 @@
 > 主程序是[`main.py`](/main/main.py)  
 > 发送通知是[`mail.py`](/main/mail.py)  
 ---  
-如果有疑问可以发邮件给我：3104182180@qq.com  
-此项目还在持续更新中，如有bug，请发邮件或者添加QQ
+如果有疑问可以发issues  
+此项目还在持续更新中，如有bug，请发issues
