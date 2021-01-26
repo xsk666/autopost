@@ -34,7 +34,7 @@ for i in range(0, len(info)):
         print("为 "+info[i].get("name")+" 打卡失败")
 
 print("打卡结束")
-#回到文件头部，清除重写
+# 回到文件头部，清除重写
 files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
