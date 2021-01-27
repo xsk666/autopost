@@ -22,5 +22,12 @@
         "email": "1056320596@qq.com",
         "notice": "true",
         "enable": "true"
+    },{
+        "name": "zyp",
+        "stucode": "2020211799",
+        "password": "xu20021016",
+        "email": "3040778576@qq.com",
+        "notice": "true",
+        "enable": "true"
     }
 ]

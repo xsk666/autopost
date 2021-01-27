@@ -1,8 +1,6 @@
 # coding=utf-8
 import json
-import time
 import requests
-import mail
 # 若sign失效则启用sign1
 # 此登录 时间较长故暂时弃用
 # 但此登录绝对稳定可用
@@ -69,7 +67,6 @@ def login(user, UA):
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN, zh;q = 0.9',
     }
-    response = requests.get(url5, headers=head3, allow_redirects=False)
     # 登陆成功，获取登陆cookie
-    cook = response.headers['set-cookie']
+    cook = requests.get(url5, headers=head3, allow_redirects=False).headers['set-cookie']
     return cook
