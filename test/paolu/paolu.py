@@ -22,7 +22,7 @@ def checkin(head, email):
         return text
     else:
         text = "签到账号：【" + email + "】\n\n剩余流量：【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】"
-        print(text)
+        print(email+" 已签到")
         return text
 
 
