@@ -70,5 +70,4 @@ for i in range(0, len(users)):
     print("开始为 "+users[i].get('account')+" 签到")
     text += onSign(users[i].get('account'), users[i].get("passwd"))+"\n\n\n\n"
 
-print(text)
 requests.get('https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=跑路云签到结果通知&desp='+text)
