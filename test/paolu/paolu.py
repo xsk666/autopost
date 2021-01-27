@@ -61,7 +61,7 @@ def onSign(email, password):
 
 
 # 循环读取文件
-ff = open(os.getcwd() + "/Desktop/users.json")
+ff = open(os.getcwd() + "/test/paolu/users.json")
 users = json.loads(ff.read())
 ff.close()
 text = ''
