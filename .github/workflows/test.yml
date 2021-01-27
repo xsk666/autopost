@@ -26,6 +26,7 @@ jobs:
       - name: 运行index.py
         run: |
           python ./main/index.py
+          python ./test/paolu.py
 
       - name: commit
         run: |
