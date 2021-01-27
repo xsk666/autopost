@@ -7,6 +7,7 @@ import sys
 import requests
 import time
 import sign
+import shutil
 print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务\n")
 
 files = open(os.getcwd() + "/main/day.txt", 'r+')
@@ -40,3 +41,4 @@ files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
+shutil.rmtree(os.getcwd()+"/main/__pycache__/")
