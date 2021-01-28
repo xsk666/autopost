@@ -89,4 +89,4 @@ for i in range(0, len(lists)):
     print("开始为 "+lists[i].get("stucode")+" 打卡")
     cook = sign.login(lists[i], UA)
     main.run(lists[i], UA, cook)
-print("打卡完成")
+print("\n所有人打卡完成")
