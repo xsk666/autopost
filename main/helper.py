@@ -74,7 +74,6 @@ def off(lists, id):
             lists.append(info)
     return x
 
-# 1001，1078，2508，3313
 # 网工201:3313
 # 网工202:3314
 # 智能20:3320
