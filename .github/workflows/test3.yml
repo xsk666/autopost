@@ -1,7 +1,6 @@
-name: 辅助打卡
+name: 测试专用
 
 on:
-  on:
   push:
     branches: [ master ]
 
