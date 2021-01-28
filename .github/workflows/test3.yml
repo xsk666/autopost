@@ -24,4 +24,4 @@ jobs:
           python -m pip install requests
       - name: 运行自动打卡脚本
         run: |
-          python ./main/index.py
+          python3 ./main/index.py

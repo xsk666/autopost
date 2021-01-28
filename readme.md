@@ -33,8 +33,7 @@
 > 登陆模块是[`sign.py`](/main/sign.py)   
 > 备用登陆模块是[`sign1.py`](/main/sign1.py)  
 > 获取打卡数据是[`getinfo.py`](/main/getinfo.py)  
-> 主程序是[`main.py`](/main/main.py)  
-> 发送通知是[`mail.py`](/main/mail.py)  
+> 主程序和推送通知是[`main.py`](/main/main.py)   
 ---  
 如果有疑问可以发issues  
 此项目还在持续更新中，如有bug，请发issues
