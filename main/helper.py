@@ -4,6 +4,7 @@ import time
 import json
 import sign
 import main
+import sys
 hapi = "https://api.weishao.com.cn"
 api = 'lightapp.weishao.com.cn'
 dat = "schoolcode=chzu&username=203135&password=Aa336699&verifyValue=&verifyKey=203135_chzu&ssokey="
@@ -84,7 +85,10 @@ lists = []
 num = []
 for i in range(0, 3):
     num.append(str(off(lists, classes[i])))
-print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人")
+print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人\n")
+if (len(lists) == 0):
+    print("所有人打卡完成")
+    sys.exit()
 for i in range(0, len(lists)):
     print("开始为 "+lists[i].get("stucode")+" 打卡")
     cook = sign.login(lists[i], UA)
