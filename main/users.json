@@ -62,5 +62,12 @@
         "email": "2446781551@qq.com",
         "notice": "true",
         "enable": "true"
+    },{
+        "name": "hm",
+        "stucode": "2020211710",
+        "password": "2020211710",
+        "email": "3104182180@qq.com",
+        "notice": "true",
+        "enable": "true"
     }
 ]
