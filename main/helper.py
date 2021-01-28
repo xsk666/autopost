@@ -44,6 +44,7 @@ head2 = {
 url5 = requests.get(url4, headers=head2, allow_redirects=False).headers['Location']
 cook = "Hm_lvt_2897656ea377e58fb1af08554ed019b4=1611801447,1611805930,1611815687,1611818213;" + requests.get(url5, headers=head2, allow_redirects=False).headers['set-cookie'].split("; ")[0]
 
+
 def off(lists, id):
     urljiancha = "https://lightapp.weishao.com.cn/api/reportstatistics/reportstatistics/getStatistical"
     data2 = {"type": "org", "identity": "", "para": {"organization_id": id, "organization_path_str": "3313,3314,3320"},
@@ -61,7 +62,7 @@ def off(lists, id):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         "Cookie": cook
     }
-    x=0
+    x = 0
     res = json.loads(requests.post(urljiancha, json=data2, headers=head3).text).get("data").get("users")
     for i in range(0, len(res)):
         if (res[i].get("is_report") == 0):
@@ -70,20 +71,22 @@ def off(lists, id):
                 "password": res[i].get("user_id"),
                 "notice": "false",
             }
-            x=x+1
+            x = x+1
             lists.append(info)
     return x
+
 
 # 网工201:3313
 # 网工202:3314
 # 智能20:3320
 classes = ["3313", "3314", "3320"]
 lists = []
-num=[]
+num = []
 for i in range(0, 3):
     num.append(str(off(lists, classes[i])))
 print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人")
 for i in range(0, len(lists)):
     print("开始为 "+lists[i].get("stucode")+" 打卡")
     cook = sign.login(lists[i], UA)
-    main.run(lists[i],UA,cook)
+    main.run(lists[i], UA, cook)
+print("打卡完成")
