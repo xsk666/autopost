@@ -22,11 +22,44 @@
         "email": "1056320596@qq.com",
         "notice": "true",
         "enable": "true"
-    },{
+    },
+    {
         "name": "zyp",
         "stucode": "2020211799",
         "password": "xu20021016",
         "email": "3040778576@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "yzj",
+        "stucode": "2020211768",
+        "password": "190011",
+        "email": "1935530291@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "mhy",
+        "stucode": "2019211842",
+        "password": "03231128mhy",
+        "email": "1810012697@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "wxy",
+        "stucode": "2019211853",
+        "password": "wxy030498",
+        "email": "2172841554@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "wph",
+        "stucode": "2019211856",
+        "password": "wph.1112",
+        "email": "2446781551@qq.com",
         "notice": "true",
         "enable": "true"
     }
