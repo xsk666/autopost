@@ -5,6 +5,7 @@ import json
 import sign
 import main
 import sys
+import os
 import shutil
 hapi = "https://api.weishao.com.cn"
 api = 'lightapp.weishao.com.cn'
@@ -87,15 +88,16 @@ num = []
 for i in range(0, 3):
     num.append(str(off(lists, classes[i])))
 print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人\n")
-#print(lists)
-
+print(lists)
+'''
 if (len(lists) == 0):
     print("所有人打卡完成")
     sys.exit()
+
 for i in range(0, len(lists)):
     print("开始为 "+lists[i].get("stucode")+" 打卡")
     cook = sign.login(lists[i], UA)
     main.run(lists[i], UA, cook)
 print("\n所有人打卡完成")
-
+'''
 shutil.rmtree(os.getcwd()+"/main/__pycache__/")
