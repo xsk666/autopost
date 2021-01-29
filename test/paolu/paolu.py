@@ -20,15 +20,9 @@ def checkin(head, email):
     response = json.loads(requests.post("https://paoluz.link/user/checkin", headers=head).text)
     msg = response.get("msg")
     if (response.get("ret") == 1):
-        print(email + " 签到成功")
-        text = "签到账号：【" + email + "】\n\n签到数据：【" + msg + "】\n\n"+"剩余流量【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n"
-        return text
+        print("签到账号：【" + email + "】\n\n签到数据：【" + msg + "】\n\n"+"剩余流量【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n")
     else:
-        text = "签到账号：【" + email + "】\n\n剩余流量：【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n"
-        print(email+" 已签到")
-        return text
-
-
+        print("签到账号：【" + email + "】\n\n剩余流量：【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n")
 def login(uuid, email, password):
     head = {
         'cookie': "__cfduid="+uuid+";lang=zh-cn",
@@ -47,12 +41,12 @@ def login(uuid, email, password):
     expire = test[17]
     head = {"cookie": "__cfduid=" + uuid + ";lang=zh-cn;cnxad_lunbo=yes;_ga=GA1.2.1656003110.1594518881;_gid=GA1.2.1056328585.1594518881;uid=" +
             uid + ";email=" + email + ";key=" + key + ";ip=" + ip + ";expire_in=" + expire}
-    return checkin(head, email)
+    checkin(head, email)
 
 
 def onSign(email, password):
     cfuid = requests.get("https://paoluz.link/auth/login").headers["set-cookie"].split(";")[0]
-    return login(cfuid, email, password)
+    login(cfuid, email, password)
 
 
 # 循环读取文件
@@ -63,6 +57,5 @@ text = ''
 print("开始 "+time.strftime("%Y/%m/%d")+" 签到")
 for i in range(0, len(users)):
     print("开始为 "+users[i].get('account')+" 签到")
-    text += onSign(users[i].get('account'), users[i].get("passwd"))
+    onSign(users[i].get('account'), users[i].get("passwd"))
 print("签到完成")
-requests.get('https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=跑路云签到结果通知&desp='+text)
