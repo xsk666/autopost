@@ -15,8 +15,6 @@ if (files.read() == time.strftime("%Y/%m/%d")):
     print("今日已打卡")
     shutil.rmtree(os.getcwd()+"/main/__pycache__/")
     sys.exit()
-
-requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 "+time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 # 读取用户列表
 f2 = open(os.getcwd()+"/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
@@ -42,4 +40,5 @@ files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
+requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 "+time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 shutil.rmtree(os.getcwd()+"/main/__pycache__/")
