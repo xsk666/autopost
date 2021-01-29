@@ -26,7 +26,7 @@ def data(UA, cook):
     private = info['private_id']
     activityid=str(info["activityid"])
     url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid='+activityid+'&can_repeat=1&page_from=my&private_id=' + private
-    # data里面存放着昨天的打卡记录
+    # data里面存放着最新的的打卡记录
     data = json.loads(requests.get(url2, headers=head).text).get("data")
     true = data.get('already_answered')  # 存放true
     false = data.get("can_reanswer")  # 存放false

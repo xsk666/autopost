@@ -95,9 +95,12 @@ if (len(lists) == 0):
     sys.exit()
 
 for i in range(0, len(lists)):
-    print("开始为 "+lists[i].get("stucode")+" 打卡")
-    cook = sign.login(lists[i], UA)
-    main.run(lists[i], UA, cook)
+    print("开始为 " + lists[i].get("stucode") + " 打卡")
+    try:
+        cook = sign.login(lists[i], UA)
+        main.run(lists[i], UA, cook)
+    except Exception:
+        print("--为"+lists[i].get("stucode")+"打卡失败")
 print("\n所有人打卡完成")
 
 shutil.rmtree(os.getcwd()+"/main/__pycache__/")

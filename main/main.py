@@ -2,7 +2,8 @@
 import requests
 import json
 import getinfo
-import time,mail
+import time
+import mail
 
 
 def run(user, UA, cook):
