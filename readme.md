@@ -1,5 +1,6 @@
 # 每日健康打卡
 
+## 自述（一堆废话）
 这是我第一次使用编写自动打卡的脚本  
 我选择了`python`  
 这也是我用`python`写的第一个项目   
@@ -15,14 +16,16 @@
 
 ## 使用范围  
 此项目可用于200+所高校的每日打卡  
-但需要修改一些文件。（现可以在滁州学院使用)  
+但需要修改一些文件。  
+***(现仅可以在滁州学院使用)***   
+(外校同学若需要可以发issues联系我)  
+  
 具体校园列表请看[`学校列表.txt`](/学校列表.txt)   
 此学校列表由此得来-><https://api.weishao.com.cn/login/api/school>
   
 (只要是基于`微哨`的应该都可以)
 
 ## 项目构成  
-
 下面简单介绍一下这个项目的构成  
 >全部代码在[`main`](/main/)文件夹中
 >> [`test`](/test)文件夹是我正在进行的测试(与现有代码无关)  
@@ -33,7 +36,8 @@
 > 登陆模块是[`sign.py`](/main/sign.py)   
 > 备用登陆模块是[`sign1.py`](/main/sign1.py)  
 > 获取打卡数据是[`getinfo.py`](/main/getinfo.py)  
-> 主程序和推送通知是[`main.py`](/main/main.py)   
+> 主程序是[`main.py`](/main/main.py)  
+> 推送通知[`mail.py`](/main/mail.py)  
 ---  
-如果有疑问可以发issues  
-此项目还在持续更新中，如有bug，请发issues
+如果有`疑问`或`bug` 可以发[`issues`](https://github.com/xsk666/autopost/issues)  
+此项目还在持续更新中...
