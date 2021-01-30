@@ -20,9 +20,9 @@ def checkin(head, email):
     response = json.loads(requests.post("https://paoluz.link/user/checkin", headers=head).text)
     msg = response.get("msg")
     if (response.get("ret") == 1):
-        print("签到账号：【" + email + "】\n\n签到数据：【" + msg + "】\n\n"+"剩余流量【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n")
+        print("签到账号：【" + email + "】\n签到数据：【" + msg + "】\n"+"剩余流量【"+surplus(head, email)+"】\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n")
     else:
-        print("签到账号：【" + email + "】\n\n剩余流量：【"+surplus(head, email)+"】\n\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n\n")
+        print("签到账号：【" + email + "】\n剩余流量：【"+surplus(head, email)+"】\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】\n")
 def login(uuid, email, password):
     head = {
         'cookie': "__cfduid="+uuid+";lang=zh-cn",

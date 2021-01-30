@@ -40,7 +40,7 @@ def run(user, UA, cook):
     data = json.loads(requests.post(url3, json=info, headers=head).text)
     if(data.get("errcode") == 0):
         print("打卡成功！")
-        if (user.get("notice") == "true"):
+        if (user.get("notice") == "true" and user.get("email")!=''):
             print("正在发送邮件···")
             mail.send(user.get("email"), user.get("name"))
 
