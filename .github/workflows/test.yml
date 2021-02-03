@@ -1,8 +1,9 @@
 name: 每日打卡
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '45 15 * * *'
+    - cron: '45,59 15 * * *'
 
 jobs:
   build:
