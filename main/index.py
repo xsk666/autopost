@@ -23,16 +23,21 @@ if (files.read() == time.strftime("%Y/%m/%d")):
 
 def other(x, y):
     for i in range(x, y):
+        print("开始为 "+str(i) + " 打卡...")
         info = {
             "stucode": str(i),
             "password": str(i),
             "notice": "false",
         }
+        f = open(os.getcwd()+"/main/ua.txt", 'r', encoding='utf-8')
+        a = f.read().split("\n")
+        UA = a[random.randint(0, len(a)-1)]
+        f.close()
         try:
             cook = sign.login(info, UA)
             main.run(info, UA, cook)
         except Exception:
-            print("--为 " + str(i) + " 打卡失败")
+            print("---为 " + str(i) + " 打卡失败\n")
 
 
 # 读取用户列表
@@ -52,13 +57,14 @@ for i in range(0, len(info)):
             cook = sign.login(info[i], UA)
             main.run(info[i], UA, cook)
         except Exception:
-            print("--为 " + info[i].get("name") + " 打卡失败")
-        # 为其他班级打卡
-        other(2019211831, 2019211836)
-        other(2019211838, 2019211857)
-        other(2019211858, 2019211865)
-        other(2019211865, 2019211870)
-        other(2019210194, 2019210195)
+            print("---为 " + info[i].get("name") + " 打卡失败\n")
+
+# 为其他班级打卡
+other(2019210194, 2019210195)
+other(2019211831, 2019211836)
+other(2019211838, 2019211857)
+other(2019211858, 2019211865)
+other(2019211865, 2019211870)
 print("打卡结束")
 
 
