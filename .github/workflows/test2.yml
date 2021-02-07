@@ -1,6 +1,7 @@
 name: 辅助打卡
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '45 0 * * *'
 
