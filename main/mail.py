@@ -23,10 +23,10 @@ def send(mail, username):
         # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.sendmail(sender, [mail, ], msg.as_string())
         server.quit()  # 关闭连接
-        print("给 "+username+" 的邮件发送成功")
+        print("给 "+username+" 的邮件发送成功\n")
     except Exception:
-        print("给 " + username + " 的邮件发送失败")
+        print("给 " + username + " 的邮件发送失败\n")
         err = json.loads(requests.get('https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=邮件发送失败&desp=用户邮箱:' +
                                       mail+'\n时间：' + time.strftime("%Y/%m/%d %H:%M")).text).get("errmsg")
         if(err == "success"):
-            print("已通知开发者")
+            print("已通知开发者\n")
