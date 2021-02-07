@@ -47,5 +47,4 @@ def run(user, UA, cook):
     elif(data.get("errcode") == 500):
         print("今日打卡已完成，自动打卡取消\n")
     else:
-        print("未知的errcode")
-        print(data)
+        print("未知的errcode\n"+data)

@@ -102,7 +102,7 @@ for i in range(0, len(lists)):
         cook = sign.login(lists[i], UA)
         main.run(lists[i], UA, cook)
     except Exception:
-        print("--为"+lists[i].get("stucode")+"打卡失败")
+        print("--为 "+lists[i].get("stucode")+" 打卡失败")
 print("\n所有人打卡完成")
 
 shutil.rmtree(os.getcwd()+"/main/__pycache__/")
