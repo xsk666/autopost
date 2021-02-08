@@ -70,7 +70,7 @@ def off(lists, id):
     x = 0
     res = json.loads(requests.post(urljiancha, json=data2, headers=head3).text).get("data").get("users")
     for i in range(0, len(res)):
-        if (res[i].get("is_report") == 0):
+        if res[i].get("is_report") == 0:
             info = {
                 "stucode": res[i].get("user_id"),
                 "password": res[i].get("user_id"),
@@ -92,7 +92,7 @@ for i in range(0, 3):
 print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人\n")
 # print(lists)
 
-if (len(lists) == 0):
+if len(lists) == 0:
     print("所有人打卡完成")
     sys.exit()
 

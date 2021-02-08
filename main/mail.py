@@ -28,5 +28,5 @@ def send(mail, username):
         print("给 " + username + " 的邮件发送失败\n")
         err = json.loads(requests.get('https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=邮件发送失败&desp=用户邮箱:' +
                                       mail+'\n时间：' + time.strftime("%Y/%m/%d %H:%M")).text).get("errmsg")
-        if(err == "success"):
+        if err == "success":
             print("已通知开发者\n")

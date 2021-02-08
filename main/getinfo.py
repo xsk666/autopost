@@ -24,8 +24,8 @@ def data(UA, cook):
     }
     info = json.loads(requests.get(url1, headers=head).text).get("data")[0]
     private = info['private_id']
-    activityid=str(info["activityid"])
-    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid='+activityid+'&can_repeat=1&page_from=my&private_id=' + private
+    activityid = str(info["activityid"])
+    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=' + activityid + '&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着最新的的打卡记录
     data = json.loads(requests.get(url2, headers=head).text).get("data")
     true = data.get('already_answered')  # 存放true
@@ -51,17 +51,17 @@ def data(UA, cook):
         # 8：填空题（不在校，所在省市）
         # 9：滑动选择题（返回时间）
         num = data[i].get("question_type")
-        if (num == 1):
+        if num == 1:
             type1.append(data[i])
-        elif (num == 3):
+        elif num == 3:
             type3.append(data[i])
-        elif (num == 4):
+        elif num == 4:
             type4.append(data[i])
-        elif (num == 7):
+        elif num == 7:
             type7.append(data[i])
-        elif (num == 8):
+        elif num == 8:
             type8.append(data[i])
-        elif (num == 9):
+        elif num == 9:
             type9.append(data[i])
 
     def ques():
@@ -81,25 +81,26 @@ def data(UA, cook):
             "hide": false,
             "answered": ''
         }
+
     for i in range(0, len(type1)):
         que = ques()
         opt = type1[i].get("option_list")
 
-        if (str(type1[i].get("user_answer_this_question")) == 'False'):
+        if str(type1[i].get("user_answer_this_question")) == 'False':
             que['questionid'] = type1[i].get("questionid")
             que["question_type"] = type1[i].get("question_type")
 
         else:
             for ii in range(0, len(opt)):
-                if (str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid")):
+                if str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid"):
                     que['questionid'] = opt[ii].get("questionid")
                     que["optionid"] = opt[ii].get("optionid")
                     que['optiontitle'] = opt[ii].get("title")
                     que["question_type"] = type1[i].get("question_type")
-                    #que["answerid"] = type1[i].get("answerid")
+                    # que["answerid"] = type1[i].get("answerid")
                     break
         que["answered"] = type1[i].get("user_answer_this_question")
-        if(que["answered"] == false):
+        if que["answered"] == false:
             que["hide"] = true
         questions.append(que)
 
@@ -118,8 +119,8 @@ def data(UA, cook):
         que['question_type'] = type4[i].get("question_type")
         que['content'] = type4[i].get("user_answer_content")
         que["answered"] = type4[i].get("user_answer_this_question")
-        #que["answerid"] = type4[i].get("answerid")
-        if(que["answered"] == false):
+        # que["answerid"] = type4[i].get("answerid")
+        if que["answered"] == false:
             que["hide"] = true
         questions.append(que)
 
@@ -129,7 +130,7 @@ def data(UA, cook):
         que['content'] = type7[i].get("user_answer_content")
         que['question_type'] = type7[i].get("question_type")
         que["answered"] = type7[i].get("user_answer_this_question")
-        #que["answerid"] = type7[i].get("answerid")
+        # que["answerid"] = type7[i].get("answerid")
 
         questions.append(que)
 
@@ -140,7 +141,7 @@ def data(UA, cook):
         que['question_type'] = type8[i].get("question_type")
         que['answered'] = type8[i].get("user_answer_this_question")
         que["hide"] = true
-        #que["answerid"] = type8[i].get("answerid")
+        # que["answerid"] = type8[i].get("answerid")
         questions.append(que)
 
     for i in range(0, len(type9)):
@@ -149,24 +150,24 @@ def data(UA, cook):
         que['question_type'] = type9[i].get("question_type")
         que['content'] = type9[i].get("user_answer_content")
         que['answered'] = type9[i].get("user_answer_this_question")
-        #que["answerid"] = type9[i].get("answerid")
+        # que["answerid"] = type9[i].get("answerid")
         que["hide"] = true
         questions.append(que)
 
     # 选择排序法
-    for i in range(0, len(questions)-1):
+    for i in range(0, len(questions) - 1):
         n = i
         for j in range(i + 1, len(questions)):
-            if (int(questions[n].get('questionid')) > int(questions[j].get("questionid"))):
+            if int(questions[n].get('questionid')) > int(questions[j].get("questionid")):
                 n = j
         temp = questions[n]
         questions[n] = questions[i]
         questions[i] = temp
 
     for i in range(0, len(questions)):
-        if (questions[i].get("questionid") == 61838):
+        if questions[i].get("questionid") == 61838:
             del questions[i]["hide"]
-        if (str(questions[i].get('answered')) == "True"):
+        if str(questions[i].get('answered')) == "True":
             questions[i]["isanswered"] = true
             questionsok.append(questions[i])
 
