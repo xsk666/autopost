@@ -1,9 +1,12 @@
 # coding=utf-8
-import json
 import requests
 
 
 def login(user, UA):
+    """
+
+    :rtype: object
+    """
     stucode = str(user.get("stucode"))
     password = str(user.get("password"))
     # 学号，密码，UA
