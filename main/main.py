@@ -1,5 +1,4 @@
 # coding=utf-8
-import json
 import requests
 import getinfo
 import mail
@@ -25,7 +24,7 @@ def run(user, UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    data = json.loads(requests.post(url, json=info, headers=head).text)
+    data = requests.post(url, json=info, headers=head).json()
     if data.get("errcode") == 0:
         print("打卡成功！")
         if user.get("notice") == "true":
@@ -36,3 +35,4 @@ def run(user, UA, cook):
         print("今日打卡已完成，自动打卡取消\n")
     else:
         print("未知的errcode\n" + str(data))
+        mail.wechat("自动打卡遇到未知的返回值", str(data))

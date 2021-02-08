@@ -3,11 +3,11 @@ import json
 import random
 import os
 import sys
-import requests
 import shutil
 import main
 import time
 import sign
+from mail import wechat
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 
@@ -18,10 +18,9 @@ if files.read() == time.strftime("%Y/%m/%d"):
         shutil.rmtree(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 try:
-    requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 " +
-                 time.strftime("%Y/%m/%d") + " 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    wechat("开始 " +time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except RuntimeError:
-    print("error")
+    print("推送微信通知出错")
 
 
 def other(x, y):
@@ -52,8 +51,8 @@ for i in range(0, len(info)):
         print("开始为 " + info[i].get("name") + " 打卡...")
         # 随机UA
         f = open(os.getcwd() + "/main/ua.txt", 'r', encoding='utf-8')
-        a = f.read().split("\n")
-        UA = a[random.randint(0, len(a) - 1)]
+        num = f.read().split("\n")
+        UA = num[random.randint(0, len(num) - 1)]
         f.close()
         # 获取用户cookie
         try:
