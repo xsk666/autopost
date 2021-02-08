@@ -20,9 +20,9 @@ def checkin(head, email):
     response = json.loads(requests.post("https://paoluz.link/user/checkin", headers=head).text)
     msg = response.get("msg")
     if (response.get("ret") == 1):
-        print("签到账号：【" + email + "】\n签到数据：【" + msg + "】\n"+"剩余流量：【"+surplus(head, email)+"】\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】")
+        print("签到数据：【" + msg + "】\n"+"剩余流量：【"+surplus(head, email)+"】\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】")
     else:
-        print("签到账号：【" + email + "】\n剩余流量：【"+surplus(head, email)+"】\n签到时间：【" + time.asctime(time.localtime(time.time())) + "】")
+        print("剩余流量：【"+surplus(head, email)+"】\n")
 
 
 def login(uuid, email, password):
@@ -48,7 +48,10 @@ def login(uuid, email, password):
 
 def onSign(email, password):
     cfuid = requests.get("https://paoluz.link/auth/login").headers["set-cookie"].split(";")[0]
-    login(cfuid, email, password)
+    try:
+        login(cfuid, email, password)
+    except Exception:
+        print("登陆失败\n")
 
 
 # 循环读取文件

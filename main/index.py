@@ -9,17 +9,17 @@ import time
 import sign
 import shutil
 print("开始 "+time.strftime("%Y/%m/%d")+" 的打卡任务\n")
-try:
-    requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 " +
-                 time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
-except:
-    print("error")
+
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if (files.read() == time.strftime("%Y/%m/%d")):
     print("今日已打卡")
     shutil.rmtree(os.getcwd()+"/main/__pycache__/")
     sys.exit()
-
+try:
+    requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 " +
+                 time.strftime("%Y/%m/%d")+" 自动打卡任务&desp=[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+except:
+    print("error")
 
 def other(x, y):
     for i in range(x, y):
@@ -66,12 +66,9 @@ other(2019211838, 2019211857)
 other(2019211858, 2019211865)
 other(2019211865, 2019211870)
 print("打卡结束")
-
-
 # 回到文件头部，清除重写
 files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
-
 shutil.rmtree(os.getcwd()+"/main/__pycache__/")
