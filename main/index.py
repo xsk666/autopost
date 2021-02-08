@@ -1,20 +1,21 @@
 # coding=utf-8
-import main
 import json
 import random
 import os
 import sys
 import requests
+import shutil
+import main
 import time
 import sign
-import shutil
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if files.read() == time.strftime("%Y/%m/%d"):
     print("今日已打卡")
-    shutil.rmtree(os.getcwd() + "/main/__pycache__/")
+    if os.path.exists(os.getcwd() + "/main/__pycache__/"):
+        shutil.rmtree(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 try:
     requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=开始 " +
@@ -73,4 +74,5 @@ files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
-shutil.rmtree(os.getcwd() + "/main/__pycache__/")
+if os.path.exists(os.getcwd() + "/main/__pycache__/"):
+    shutil.rmtree(os.getcwd() + "/main/__pycache__/")
