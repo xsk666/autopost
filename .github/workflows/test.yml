@@ -28,7 +28,7 @@ jobs:
         run: |
           python3 ./test/paolu/paolu.py
           python3 ./main/index.py
-      - name: commit
+      - name: 推送文件
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name xsk666
