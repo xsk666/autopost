@@ -3,6 +3,7 @@ import requests
 import time
 import sign
 import main
+import mail
 import sys
 import os
 import shutil
@@ -105,5 +106,6 @@ for i in range(0, len(lists)):
     except Exception:
         print("---为 "+lists[i].get("stucode")+" 打卡失败")
 print("\n所有人打卡完成")
+mail.send("1045881785@qq.com","wzc")
 if os.path.exists(os.getcwd() + "/main/__pycache__/"):
     shutil.rmtree(os.getcwd()+"/main/__pycache__/")
