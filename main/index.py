@@ -16,7 +16,7 @@ if files.read() == time.strftime("%Y/%m/%d"):
         remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 try:
-    wechat("开始 " +time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    wechat("开始 " + time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except RuntimeError:
     print("推送微信通知出错")
 
