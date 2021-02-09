@@ -3,19 +3,17 @@ import json
 import random
 import os
 import sys
-import shutil
 import main
 import time
 import sign
 from mail import wechat
-
+from shutil import rmtree as remove
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
-
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if files.read() == time.strftime("%Y/%m/%d"):
     print("今日已打卡")
     if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-        shutil.rmtree(os.getcwd() + "/main/__pycache__/")
+        remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 try:
     wechat("开始 " +time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
@@ -54,8 +52,8 @@ for i in range(0, len(info)):
         num = f.read().split("\n")
         UA = num[random.randint(0, len(num) - 1)]
         f.close()
-        # 获取用户cookie
         try:
+            # 获取用户cookie
             cook = sign.login(info[i], UA)
             main.run(info[i], UA, cook)
         except Exception:
@@ -74,4 +72,4 @@ files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
 if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-    shutil.rmtree(os.getcwd() + "/main/__pycache__/")
+    remove(os.getcwd() + "/main/__pycache__/")

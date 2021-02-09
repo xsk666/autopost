@@ -1,7 +1,7 @@
 # coding=utf-8
 import json
 import requests
-
+import time
 
 def data(UA, cook):
     """
@@ -23,6 +23,8 @@ def data(UA, cook):
         'Cookie': cook,
     }
     info = json.loads(requests.get(url1, headers=head).text).get("data")[0]
+    if info.get("createtime") == time.strftime("%Y-%m-%d") :
+        return 0
     private = info['private_id']
     activityid = str(info["activityid"])
     url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=' + activityid + '&can_repeat=1&page_from=my&private_id=' + private

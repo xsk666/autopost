@@ -10,11 +10,13 @@ def wechat(text, desp):
     return requests.get(
         "https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=" + text + "&desp=" + desp).json()
 
+
 def send(mail, username):
     # 发送到的邮箱地址，收件人的名称
     try:
         sender = '3104182180@qq.com'  # 发件人邮箱账号
-        msg = MIMEText("To："+username+"\n\t自动健康打卡成功通知\n\t通知发送时间：" + time.strftime("%Y/%m/%d %H:%M")+"\n\n\t\tFrom：运行在github的开源项目", 'plain', 'utf-8')  # 填写邮件内容
+        msg = MIMEText("To：" + username + "\n\t自动健康打卡成功通知\n\t通知发送时间：" + time.strftime(
+            "%Y/%m/%d %H:%M") + "\n\n\t\tFrom：运行在github的开源项目", 'plain', 'utf-8')  # 填写邮件内容
         # 括号里的对应发件人邮箱昵称、发件人邮箱账号
         msg['From'] = formataddr(["健康打卡通知", sender])
         msg['To'] = formataddr([username, mail])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
@@ -28,6 +30,6 @@ def send(mail, username):
         print("给 " + username + " 的邮件发送成功\n")
     except Exception:
         print("给 " + username + " 的邮件发送失败\n")
-        err = wechat('邮件发送失败','用户邮箱:' + mail + '\n\n时间：' + time.strftime("%Y/%m/%d %H:%M")).get("errmsg")
+        err = wechat('邮件发送失败', '用户邮箱:' + mail + '\n\n时间：' + time.strftime("%Y/%m/%d %H:%M")).get("errmsg")
         if err == "success":
             print("已通知开发者\n")

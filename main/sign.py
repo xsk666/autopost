@@ -3,14 +3,9 @@ import requests
 
 
 def login(user, UA):
-    """
-
-    :rtype: object
-    """
     stucode = str(user.get("stucode"))
     password = str(user.get("password"))
     # 学号，密码，UA
-
     api = 'api.weishao.com.cn'
     hapi = 'https://api.weishao.com.cn'
     # 分析协议得出的

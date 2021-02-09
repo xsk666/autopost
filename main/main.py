@@ -6,6 +6,9 @@ import mail
 def run(user, UA, cook):
     # 读取个人提交信息
     info = getinfo.data(UA, cook)
+    if info == 0:
+        print("今日打卡已完成，自动打卡取消\n")
+        return
     # 提交今日打卡
     url = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/addMyAnswer'
     head = {

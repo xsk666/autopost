@@ -6,7 +6,7 @@ import main
 import mail
 import sys
 import os
-import shutil
+from shutil import rmtree as remove
 hapi = "https://api.weishao.com.cn"
 api = 'lightapp.weishao.com.cn'
 dat = "schoolcode=chzu&username=203135&password=Aa336699&verifyValue=&verifyKey=203135_chzu&ssokey="
@@ -57,7 +57,7 @@ def off(lists, id):
              "date": time.strftime("%Y-%m-%d"), "activityid": "5599", "flag": 0, "domain": "chzu", "stucode": "203135"}
     head3 = {
         'Host': api,
-        "Content-Length": str(len(str(data2))),# 传入数据长度
+        "Content-Length": str(len(str(data2))),  # 传入数据长度
         'cache-control': 'max-age=0',
         'Upgrade-Insecure-Requests': '1',
         'Origin': 'null',
@@ -84,7 +84,7 @@ def off(lists, id):
 
 # 网工201:3313
 # 网工202:3314
-# 智能20:3320
+# 智能20 :3320
 classes = ["3313", "3314", "3320"]
 # 未打卡的人的学号列表
 lists = []
@@ -92,7 +92,7 @@ lists = []
 num = []
 for i in range(0, 3):
     num.append(str(off(lists, classes[i])))
-print("共有"+str(len(lists))+"人未打卡\n网工201 共"+num[0]+"人\n网工202 共"+num[1]+"人\n智能20  共"+num[2]+"人\n")
+print("共有" + str(len(lists)) + "人未打卡\n网工201 共" + num[0] + "人\n网工202 共" + num[1] + "人\n智能20  共" + num[2] + "人\n")
 
 if len(lists) == 0:
     print("所有人打卡完成")
@@ -104,8 +104,8 @@ for i in range(0, len(lists)):
         cook = sign.login(lists[i], UA)
         main.run(lists[i], UA, cook)
     except Exception:
-        print("---为 "+lists[i].get("stucode")+" 打卡失败")
+        print("---为 " + lists[i].get("stucode") + " 打卡失败")
 print("\n所有人打卡完成")
-mail.send("1045881785@qq.com","wzc")
+mail.send("1045881785@qq.com", "wzc")
 if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-    shutil.rmtree(os.getcwd()+"/main/__pycache__/")
+    remove(os.getcwd() + "/main/__pycache__/")
