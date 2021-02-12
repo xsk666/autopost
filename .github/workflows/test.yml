@@ -3,7 +3,7 @@ name: 每日打卡
 on:
   workflow_dispatch:
   schedule:
-    - cron: '58 15 * * *'
+    - cron: '59 15 * * *'
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name xsk666
           git add .
-          git commit -m  date +%Y-%m-%d -a || echo "day update"
+           git commit -m "by xsk666 Github Actions" -a || echo "day update"
       - name: 推送day.txt
         uses: ad-m/github-push-action@master
         with:
