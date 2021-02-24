@@ -77,5 +77,13 @@
         "email": "1149625265@qq.com",
         "notice": "true",
         "enable": "true"
+    },
+    {
+        "name": "zxy",
+        "stucode": "2019211804",
+        "password": "wls2000102",
+        "email": "1720265476@qq.com",
+        "notice": "false",
+        "enable": "true"
     }
 ]
