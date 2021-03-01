@@ -1,4 +1,4 @@
-name: 'GitHub Actions SCUT SIGN IN'
+name: '每日自动任务'
 
 on:
   workflow_dispatch:

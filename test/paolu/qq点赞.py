@@ -19,5 +19,6 @@ driver.find_element_by_id("inputvalue").send_keys("3104182180")
 time.sleep(0.5)
 driver.find_element_by_id("submit_buy").click()
 print("点赞成功")
+
 # requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=每日QQ点赞成功&desp=时间为" +time.strftime("%Y/%m/%d")).json()
 
