@@ -22,6 +22,7 @@ jobs:
             python-version: '3.7'
         - name: '安装selenium环境'
           run: |
+            pip install requests
             pip install selenium
         - name: Install ChromeDriver
           run: |
