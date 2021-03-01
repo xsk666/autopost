@@ -1,0 +1,38 @@
+name: 'GitHub Actions SCUT SIGN IN'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '59 15 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+        - name: 更新为中国时间
+          run: |
+            sudo rm -rf /etc/localtime
+            sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+            date
+        - name: 'Checkout codes'
+          uses: actions/checkout@v1
+        - name: 'Set up Python'
+          uses: actions/setup-python@v1
+          with:
+            python-version: '3.7'
+        - name: '安装selenium环境'
+          run: |
+            pip install selenium
+        - name: Install ChromeDriver
+          run: |
+            CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
+              && CHROMEDRIVER_RELEASE=$(curl --location --fail --retry 3 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}) \
+              && curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_linux64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_RELEASE/chromedriver_linux64.zip" \
+              && cd /tmp \
+              && unzip chromedriver_linux64.zip \
+              && rm -rf chromedriver_linux64.zip \
+              && sudo mv chromedriver /usr/local/bin/chromedriver \
+              && sudo chmod +x /usr/local/bin/chromedriver \
+              && chromedriver --version
+        - name: 'QQ点赞'
+          run: python3 ./test/paolu/qq点赞.py
