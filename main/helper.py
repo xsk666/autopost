@@ -85,14 +85,14 @@ def off(lists, id):
 # 网工201:3313
 # 网工202:3314
 # 智能20 :3320
-classes = ["3313", "3314", "3320"]
+classes = ["3313", "3314"]#,"3320"]
 # 未打卡的人的学号列表
 lists = []
 # 每个班未打卡的人数
 num = []
-for i in range(0, 3):
+for i in range(0, 2):
     num.append(str(off(lists, classes[i])))
-print("共有" + str(len(lists)) + "人未打卡\n网工201 共" + num[0] + "人\n网工202 共" + num[1] + "人\n智能20  共" + num[2] + "人\n")
+print("共有" + str(len(lists)) + "人未打卡\n网工201 共" + num[0] + "人\n网工202 共" + num[1] + "人\n")#智能20  共" + num[2] + "人\n")
 
 if len(lists) == 0:
     print("所有人打卡完成")
