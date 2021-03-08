@@ -86,5 +86,13 @@
         "email": "2805528776@qq.com",
         "notice": "true",
         "enable": "true"
+    },
+    {
+        "name": "whz",
+        "stucode": "2020212209",
+        "password": "whz0408whz",
+        "email": "1805145820@qq.com",
+        "notice": "true",
+        "enable": "true"
     }
 ]
