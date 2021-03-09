@@ -59,12 +59,6 @@ for i in range(0, len(info)):
         except Exception:
             print("---为 " + info[i].get("name") + " 打卡失败\n")
 
-# 为其他班级打卡
-other(2019210194, 2019210195)
-other(2019211831, 2019211836)
-other(2019211838, 2019211857)
-other(2019211858, 2019211865)
-other(2019211865, 2019211870)
 print("打卡结束")
 # 回到文件头部，清除重写
 files.seek(0)
