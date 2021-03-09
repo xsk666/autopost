@@ -16,22 +16,6 @@
         "enable": "true"
     },
     {
-        "name": "tzc",
-        "stucode": "2020211899",
-        "password": "190011",
-        "email": "1056320596@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
-        "name": "zyp",
-        "stucode": "2020211799",
-        "password": "xu20021016",
-        "email": "3040778576@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
         "name": "zxm",
         "stucode": "2020214216",
         "password": "2020214216",
@@ -40,58 +24,41 @@
         "enable": "true"
     },
     {
-        "name": "mhy",
-        "stucode": "2019211842",
-        "password": "03231128mhy",
-        "email": "1810012697@qq.com",
+        "name": "yk",
+        "stucode": "2020211765",
+        "password": "2020211765",
+        "email": "3212107004@qq.com",
         "notice": "true",
         "enable": "true"
     },
     {
-        "name": "wxy",
-        "stucode": "2019211853",
-        "password": "wxy030498",
-        "email": "2172841554@qq.com",
+        "name": "zl",
+        "stucode": "2020211777",
+        "password": "2020211777",
+        "email": "3175836460@qq.com",
         "notice": "true",
         "enable": "true"
     },
     {
-        "name": "wph",
-        "stucode": "2019211856",
-        "password": "wph.1112",
-        "email": "2446781551@qq.com",
+        "name": "hyd",
+        "stucode": "2020211716",
+        "password": "2020211716",
+        "email": "2286794906@qq.com",
         "notice": "true",
         "enable": "true"
     },
     {
-        "name": "zxy",
-        "stucode": "2019211869",
-        "password": "2019211859",
-        "email": "1149625265@qq.com",
+        "name": "xhh",
+        "stucode": "2020211756",
+        "password": "2020211756",
+        "email": "3109607298@qq.com",
         "notice": "true",
         "enable": "true"
-    },
-    {
-        "name": "lxy",
-        "stucode": "2020212288",
-        "password": "lxy112810",
-        "email": "2018671857@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
-        "name": "zj",
-        "stucode": "2020212241",
-        "password": "zj010718.",
-        "email": "2805528776@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
-        "name": "whz",
-        "stucode": "2020212209",
-        "password": "whz0408whz",
-        "email": "1805145820@qq.com",
+    },{
+        "name": "zyp",
+        "stucode": "2020211799",
+        "password": "xu20021016",
+        "email": "3040778576@qq.com",
         "notice": "true",
         "enable": "true"
     }
