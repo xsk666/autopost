@@ -21,25 +21,6 @@ except RuntimeError:
     print("推送微信通知出错")
 
 
-def other(x, y):
-    for i in range(x, y):
-        print("开始为 " + str(i) + " 打卡...")
-        info = {
-            "stucode": str(i),
-            "password": str(i),
-            "notice": "false",
-        }
-        f = open(os.getcwd() + "/main/ua.txt", 'r', encoding='utf-8')
-        a = f.read().split("\n")
-        UA = a[random.randint(0, len(a) - 1)]
-        f.close()
-        try:
-            cook = sign.login(info, UA)
-            main.run(info, UA, cook)
-        except Exception:
-            print("---为 " + str(i) + " 打卡失败\n")
-
-
 # 读取用户列表
 f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
