@@ -1,6 +1,5 @@
 # coding=utf-8
 import requests
-import time
 
 userInfo = 'http://dxx.ahyouth.org.cn/api/userInfo'
 learn = 'http://dxx.ahyouth.org.cn/api/newLearn'
