@@ -51,14 +51,22 @@
         "stucode": "2020211799",
         "password": "xu20021016",
         "email": "3040778576@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
+    "notice": "true",
+    "enable": "true"
+},
     {
         "name": "zxm",
         "stucode": "2020214216",
         "password": "2020214216",
         "email": "1203225696@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "zyy",
+        "stucode": "2020211772",
+        "password": "2020211772",
+        "email": "2180497855@qq.com",
         "notice": "true",
         "enable": "true"
     }
