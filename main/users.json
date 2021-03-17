@@ -16,14 +16,6 @@
         "enable": "true"
     },
     {
-        "name": "zxm",
-        "stucode": "2020214216",
-        "password": "2020214216",
-        "email": "1203225696@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
         "name": "yk",
         "stucode": "2020211765",
         "password": "2020211765",
@@ -59,6 +51,14 @@
         "stucode": "2020211799",
         "password": "xu20021016",
         "email": "3040778576@qq.com",
+        "notice": "true",
+        "enable": "true"
+    },
+    {
+        "name": "zxm",
+        "stucode": "2020214216",
+        "password": "2020214216",
+        "email": "1203225696@qq.com",
         "notice": "true",
         "enable": "true"
     }
