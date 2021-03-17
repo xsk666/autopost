@@ -17,5 +17,5 @@ head1 = {
     'X-Requested-With': 'com.tencent.mm',
     'Cookie': 'PHPSESSID=857160ee6000aa7493839c8cfc2cb554'
 }
-res = requests.post(userInfo, headers=head1, allow_redirects=False)
+res = requests.post(userInfo , headers=head1, allow_redirects=False)
 print(res.json())
