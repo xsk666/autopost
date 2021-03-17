@@ -36,34 +36,35 @@
         "stucode": "2020211716",
         "password": "2020211716",
         "email": "2286794906@qq.com",
-        "notice": "true",
-        "enable": "true"
+      "notice": "true",
+      "enable": "true"
     },
-    {
-        "name": "xhh",
-        "stucode": "2020211756",
-        "password": "2020211756",
-        "email": "3109607298@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },{
-        "name": "zyp",
-        "stucode": "2020211799",
-        "password": "xu20021016",
-        "email": "3040778576@qq.com",
+  {
+    "name": "xhh",
+    "stucode": "2020211756",
+    "password": "2020211756",
+    "email": "3109607298@qq.com",
     "notice": "true",
     "enable": "true"
-},
-    {
-        "name": "zxm",
-        "stucode": "2020214216",
-        "password": "2020214216",
-        "email": "1203225696@qq.com",
-        "notice": "true",
-        "enable": "true"
-    },
-    {
-        "name": "zyy",
+  },
+  {
+    "name": "zyp",
+    "stucode": "2020211799",
+    "password": "xu20021016",
+    "email": "3040778576@qq.com",
+    "notice": "true",
+    "enable": "true"
+  },
+  {
+    "name": "zxm",
+    "stucode": "2020214216",
+    "password": "2020214216",
+    "email": "1203225696@qq.com",
+    "notice": "true",
+    "enable": "true"
+  },
+  {
+    "name": "zyy",
         "stucode": "2020211772",
         "password": "2020211772",
         "email": "2180497855@qq.com",
