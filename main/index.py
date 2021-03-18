@@ -5,7 +5,6 @@ import random
 import sys
 import time
 from shutil import rmtree as remove
-
 import main
 import sign
 from mail import wechat
@@ -25,7 +24,8 @@ f2.close()
 text = '| 姓名 | 结果 | \n|:---:|:---:| \n'
 for i in range(0, len(info)):
     if info[i].get("enable") == 'true':
-        print("开始为 " + info[i].get("name") + " 打卡...")
+        name = info[i].get("name")
+        print("开始为 " + name + " 打卡...")
         # 随机UA
         f = open(os.getcwd() + "/main/ua.txt", 'r', encoding='utf-8')
         num = f.read().split("\n")
@@ -34,9 +34,10 @@ for i in range(0, len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + info[i].get("name") + " | " + main.run(info[i], UA, cook) + " | \n"
+            text += "| " + name + " | " + main.run(info[i], UA, cook) + " | \n"
         except Exception:
-            print("---为 " + info[i].get("name") + " 打卡失败\n")
+            print("---为 " + name + " 打卡失败\n")
+            text += "| " + name + " | 打卡失败 | \n"
 
 print("打卡结束")
 

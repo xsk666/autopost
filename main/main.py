@@ -37,11 +37,11 @@ def run(user, UA, cook):
             mail.send(user.get("email"), user.get("name"))
         return "成功！"
 
-    elif data.get("errcode") == 500:
+    elif data.get("status") == 400:
         print("今日打卡已完成，自动打卡取消\n")
         return "已完成"
 
     else:
-        print("未知的errcode\n" + str(data) + "\n")
+        print("---未知的errcode\n" + str(data) + "\n")
         # mail.wechat("自动打卡遇到未知的返回值", str(data))
         return "未知结果"
