@@ -5,7 +5,6 @@ import random
 import sys
 import time
 from shutil import rmtree as remove
-
 import main
 import sign
 from mail import wechat
@@ -22,7 +21,7 @@ if files.read() == time.strftime("%Y/%m/%d"):
 f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
-text = '|<div style="width:150px">姓名</div>| <div style="width:100px">结果</div>|\n:-----:   |:------:\n'
+text = '| 姓名 | 结果 | \n|:---:|:---:| \n'
 for i in range(0, len(info)):
     if info[i].get("enable") == 'true':
         name = info[i].get("name")
@@ -35,15 +34,15 @@ for i in range(0, len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += name + " | " + main.run(info[i], UA, cook) + "\n"
+            text += "| " + name + " | " + main.run(info[i], UA, cook) + " | \n"
         except Exception:
             print("---为 " + name + " 打卡失败\n")
-            text += name + " | 打卡失败 | \n"
+            text += "| " + name + " | 打卡失败 | \n"
 
 print("打卡结束")
 
 try:
-    wechat(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n\n|[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    wechat(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except Exception:
     print("推送微信通知出错")
 
