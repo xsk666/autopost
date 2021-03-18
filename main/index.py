@@ -42,7 +42,7 @@ for i in range(0, len(info)):
 print("打卡结束")
 
 try:
-    wechat(time.strftime("%Y年%m月%d日") + " 自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    wechat(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except Exception:
     print("推送微信通知出错")
 
