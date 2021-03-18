@@ -1,5 +1,4 @@
 # coding=utf-8
-import json
 import requests
 # 若sign失效则启用sign1
 # 此登录 时间较长故暂时弃用
@@ -21,8 +20,7 @@ def login(user, UA):
     # 得到初始cookie
     cook = response.headers['set-cookie']
     # 提交的个人数据
-    dat = "schoolcode=chzu&username="+stucode+"&password=" + \
-        password+"&verifyValue=&verifyKey="+stucode+"_chzu&ssokey="
+    dat = "schoolcode=chzu&username=" + stucode + "&password=" + password + "&verifyValue=&verifyKey=" + stucode + "_chzu&ssokey="
     # 头部要携带提交的数据的长度
     head1 = {
         'Host': api,

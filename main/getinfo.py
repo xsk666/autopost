@@ -3,6 +3,7 @@ import json
 import requests
 import time
 
+
 def data(UA, cook):
     """
      获取处理后的数据
@@ -23,7 +24,7 @@ def data(UA, cook):
         'Cookie': cook,
     }
     info = json.loads(requests.get(url1, headers=head).text).get("data")[0]
-    if info.get("createtime") == time.strftime("%Y-%m-%d") :
+    if info.get("createtime") == time.strftime("%Y-%m-%d"):
         return 0
     private = info['private_id']
     activityid = str(info["activityid"])

@@ -28,7 +28,7 @@ def send(mail, username):
         server.sendmail(sender, mail, msg.as_string())
         server.quit()  # 关闭连接
         print("给 " + username + " 的邮件发送成功\n")
-    except Exception:
+    except ConnectionError:
         print("给 " + username + " 的邮件发送失败\n")
         err = wechat('邮件发送失败', '用户邮箱:' + mail + '\n\n时间：' + time.strftime("%Y/%m/%d %H:%M")).get("errmsg")
         if err == "success":

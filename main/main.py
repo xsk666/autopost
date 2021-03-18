@@ -3,6 +3,7 @@ import requests
 import getinfo
 import mail
 
+
 def run(user, UA, cook):
     # 读取个人提交信息
     info = getinfo.data(UA, cook)

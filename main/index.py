@@ -8,6 +8,7 @@ import time
 import sign
 from mail import wechat
 from shutil import rmtree as remove
+
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if files.read() == time.strftime("%Y/%m/%d"):
@@ -16,10 +17,9 @@ if files.read() == time.strftime("%Y/%m/%d"):
         remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 try:
-    wechat("开始 " + time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
-except RuntimeError:
+    wechat("开始 " + time.strftime("%Y/%m/%d") + " 自动打卡任务", "[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+except ConnectionError:
     print("推送微信通知出错")
-
 
 # 读取用户列表
 f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
@@ -37,7 +37,7 @@ for i in range(0, len(info)):
             # 获取用户cookie
             cook = sign.login(info[i], UA)
             main.run(info[i], UA, cook)
-        except Exception:
+        except ConnectionError:
             print("---为 " + info[i].get("name") + " 打卡失败\n")
 
 print("打卡结束")
