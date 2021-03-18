@@ -34,11 +34,12 @@ for i in range(0, len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + info[i].get("name") + " | " + main.run(info[i], UA, cook) + "| \n"
+            text += "| " + info[i].get("name") + " | " + main.run(info[i], UA, cook) + " | \n"
         except Exception:
             print("---为 " + info[i].get("name") + " 打卡失败\n")
 
 print("打卡结束")
+
 try:
     wechat(time.strftime("%Y年%m月%d日") + " 自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except Exception:

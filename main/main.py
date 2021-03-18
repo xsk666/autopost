@@ -1,5 +1,6 @@
 # coding=utf-8
 import requests
+
 import getinfo
 import mail
 
@@ -41,6 +42,6 @@ def run(user, UA, cook):
         return "已完成"
 
     else:
-        print("未知的errcode\n" + str(data))
+        print("未知的errcode\n" + str(data) + "\n")
         # mail.wechat("自动打卡遇到未知的返回值", str(data))
         return "未知结果"
