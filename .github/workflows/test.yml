@@ -3,7 +3,7 @@ name: 每日打卡
 on:
   workflow_dispatch:
   schedule:
-    - cron: '49 15 * * *'
+    - cron: '59 15 * * *'
 
 jobs:
   build:
