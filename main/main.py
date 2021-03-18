@@ -7,9 +7,9 @@ import mail
 def run(user, UA, cook):
     # 读取个人提交信息
     info = getinfo.data(UA, cook)
-    if info == 0:
+    if info == 1:
         print("今日打卡已完成，自动打卡取消\n")
-        return
+        return "已完成"
     # 提交今日打卡
     url = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/addMyAnswer'
     head = {
@@ -34,9 +34,13 @@ def run(user, UA, cook):
         if user.get("notice") == "true":
             print("正在发送邮件···")
             mail.send(user.get("email"), user.get("name"))
+        return "成功！"
 
     elif data.get("errcode") == 500:
         print("今日打卡已完成，自动打卡取消\n")
+        return "已完成"
+
     else:
         print("未知的errcode\n" + str(data))
-        mail.wechat("自动打卡遇到未知的返回值", str(data))
+        # mail.wechat("自动打卡遇到未知的返回值", str(data))
+        return "未知结果"

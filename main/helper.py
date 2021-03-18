@@ -51,7 +51,7 @@ try:
     url5 = requests.get(url4, headers=head2, allow_redirects=False).headers['Location']
     cook = "Hm_lvt_2897656ea377e58fb1af08554ed019b4=1611801447,1611805930,1611815687,1611818213;" + \
            requests.get(url5, headers=head2, allow_redirects=False).headers['set-cookie'].split("; ")[0]
-except ConnectionError:
+except Exception:
     print("登录错误")
 
 

@@ -1,13 +1,14 @@
 # coding=utf-8
 import json
-import random
 import os
+import random
 import sys
-import main
 import time
+from shutil import rmtree as remove
+
+import main
 import sign
 from mail import wechat
-from shutil import rmtree as remove
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
@@ -16,15 +17,12 @@ if files.read() == time.strftime("%Y/%m/%d"):
     if os.path.exists(os.getcwd() + "/main/__pycache__/"):
         remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
-try:
-    wechat("开始 " + time.strftime("%Y/%m/%d") + " 自动打卡任务", "[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
-except ConnectionError:
-    print("推送微信通知出错")
 
 # 读取用户列表
 f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
+text = '| 姓名 | 结果 | \n|:---:|:---:| \n'
 for i in range(0, len(info)):
     if info[i].get("enable") == 'true':
         print("开始为 " + info[i].get("name") + " 打卡...")
@@ -36,13 +34,18 @@ for i in range(0, len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            main.run(info[i], UA, cook)
-        except ConnectionError:
+            text += "| " + info[i].get("name") + " | " + main.run(info[i], UA, cook) + "| \n"
+        except Exception:
             print("---为 " + info[i].get("name") + " 打卡失败\n")
 
 print("打卡结束")
-# 回到文件头部，清除重写
+try:
+    wechat(time.strftime("%Y年%m月%d日") + " 自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+except Exception:
+    print("推送微信通知出错")
+
 # 更新day.txt
+# 回到文件头部，清除重写
 files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
