@@ -1,9 +1,10 @@
 # coding=utf-8
 import smtplib
-import requests
 import time
 from email.mime.text import MIMEText
 from email.utils import formataddr
+
+import requests
 
 
 def wechat(text, desp):
