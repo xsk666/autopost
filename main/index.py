@@ -5,6 +5,7 @@ import random
 import sys
 import time
 from shutil import rmtree as remove
+
 import main
 import sign
 from mail import wechat

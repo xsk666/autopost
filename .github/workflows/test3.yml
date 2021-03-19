@@ -26,4 +26,4 @@ jobs:
           python -m pip install requests
       - name: 运行脚本
         run: |
-          python3 ./test/paolu/study.py
+          python3 ./test/study.py
