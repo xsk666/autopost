@@ -1,6 +1,5 @@
 # coding=utf-8
 import json
-import os
 import re
 import time
 
@@ -57,13 +56,11 @@ def onSign(email, password):
         print("登陆失败\n")
 
 
-# 循环读取文件
-ff = open(os.getcwd() + "/test/paolu/users.json")
-users = json.loads(ff.read())
-ff.close()
 text = ''
 print("开始 " + time.strftime("%Y/%m/%d") + " 签到")
-for i in range(0, len(users)):
-    print("开始为 " + users[i].get('account') + " 签到")
-    onSign(users[i].get('account'), users[i].get("passwd"))
-print("签到完成")
+try:
+    print("开始签到")
+    onSign("3104182180@qq.com", "xu20021016")
+    print("签到完成")
+except  Exception:
+    print("签到失败")
