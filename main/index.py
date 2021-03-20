@@ -40,7 +40,7 @@ for i in range(0, len(info)):
             print("---为 " + name + " 打卡失败\n")
             text += "| " + name + " | 打卡失败 | \n"
 
-print("打卡结束")
+print("打卡结束\n")
 
 try:
     wechat(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")

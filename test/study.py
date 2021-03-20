@@ -8,6 +8,9 @@ url = "http://dxx.ahyouth.org.cn/api/"
 userInfo = url + 'userInfo'
 homeData = url + "homeData"
 newLearn = url + 'newLearn'
+oldLearn = url + "oldLearn"
+learnList = url + "learnList?id="
+historyList = url + "historyList"
 cultureList = url + 'cultureList?page=1'
 cultureDetail = url + "cultureDetail"
 imageTextList = url + "imageTextList?page=1"
@@ -48,7 +51,20 @@ def read(url, id, title):
 
 text = '| 标题 | 结果 |\n | :---| :--- |\n'
 
-# 每日cultureList任务(0,2)
+# 每日随机往期学习 1次
+try:
+    echo("->开始往期学习")
+    res = requests.get(historyList, headers=head).json().get("list").get("history")
+    res = res[random.randint(0, len(res) - 1)]
+    echo("随机选择：" + res.get("remark") + " " + res.get("title"))
+    res = requests.get(learnList + str(res.get("id")), headers=head).json().get("list").get("list")
+    res = res[random.randint(0, len(res))]
+    text += read(oldLearn, res.get("id"), res.get("title"))
+    echo("->往期学习成功\n")
+except Exception:
+    echo("->往期学习失败")
+
+# 每日cultureList任务 2次
 try:
     echo("->开始每日文化产品阅读")
     list = requests.post(cultureList, headers=head).json().get("lists").get("data")
@@ -58,7 +74,7 @@ try:
 except Exception:
     echo("->获取文化产品列表失败")
 
-# 每日imageTextList任务(0,5)
+# 每日imageTextList任务 5次
 try:
     echo("->开始每日文章阅读")
     list = requests.post(imageTextList, headers=head).json().get("lists").get("data")
@@ -69,8 +85,7 @@ except Exception:
     echo("->获取文章列表失败")
 try:
     res = requests.post(homeData, headers=head).json().get("list")
-    text += "| 全省排名 | " + str(res.get("province_rank")) + " | \n| 组织排名 | " + str(res.get("organization_rank")) + " | \n| 累计积分 |" + str(
-        res.get("score")) + " | \n"
+    text += "|全省排名|" + str(res.get("province_rank")) + "|\n|组织排名|" + str(res.get("organization_rank")) + "|\n|累计积分|" + str(res.get("score")) + "|\n"
     err = requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=青年大学习每日任务完成啦&desp=" + text).json().get("errmsg")
     if err == "success":
         echo("->通知发送成功")

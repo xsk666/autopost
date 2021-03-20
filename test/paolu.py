@@ -61,6 +61,6 @@ print("开始 " + time.strftime("%Y/%m/%d") + " 签到")
 try:
     print("开始签到")
     onSign("3104182180@qq.com", "xu20021016")
-    print("签到完成")
+    print("签到完成\n")
 except  Exception:
-    print("签到失败")
+    print("签到失败\n")
