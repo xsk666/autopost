@@ -34,6 +34,11 @@ head = {
 def echo(text):
     print(time.strftime("%m-%d %H:%M:%S", time.localtime()) + "-> " + text)
 
+try:
+    requests.post(userInfo, headers=head).json()
+    echo("每日登陆成功\n")
+except Exception:
+    echo("登陆失败\n")
 
 def read(url, id, title):
     echo("开始阅读：" + title)
@@ -49,7 +54,7 @@ def read(url, id, title):
     return text
 
 
-text = '| 标题 | 结果 |\n | :---| :--- |\n'
+text = '|标题|结果|\n|:---|:---|\n'
 
 # 每日随机往期学习 1次
 try:
@@ -83,6 +88,7 @@ try:
     echo("->每日文章阅读完成\n")
 except Exception:
     echo("->获取文章列表失败")
+
 try:
     res = requests.post(homeData, headers=head).json().get("list")
     text += "|全省排名|" + str(res.get("province_rank")) + "|\n|组织排名|" + str(res.get("organization_rank")) + "|\n|累计积分|" + str(res.get("score")) + "|\n"
