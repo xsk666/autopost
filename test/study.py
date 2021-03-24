@@ -5,16 +5,16 @@ import time
 import requests
 
 url = "http://dxx.ahyouth.org.cn/api/"
-userInfo = url + 'userInfo'
-homeData = url + "homeData"
-newLearn = url + 'newLearn'
-oldLearn = url + "oldLearn"
-learnList = url + "learnList?id="
-historyList = url + "historyList"
-cultureList = url + 'cultureList?page=1'
-cultureDetail = url + "cultureDetail"
-imageTextList = url + "imageTextList?page=1"
-imageTextDetail = url + "imageTextDetail"
+todayTask = url + 'todayTask'  # 每日任务
+homeData = url + "homeData"  # 主页面
+newLearn = url + 'newLearn'  # 本期学习
+oldLearn = url + "oldLearn"  # 往期学习
+historyList = url + "historyList"  # 往季学习列表
+learnList = url + "learnList?id="  # 第id季学习列表
+cultureList = url + 'cultureList?page=1'  # 每日文化产品列表
+cultureDetail = url + "cultureDetail"  # 文化产品内容
+imageTextList = url + "imageTextList?page=1"  # 每日文章列表
+imageTextDetail = url + "imageTextDetail"  # 每日文章内容
 head = {
     'Host': 'dxx.ahyouth.org.cn',
     'Connection': 'keep-alive',
@@ -34,11 +34,13 @@ head = {
 def echo(text):
     print(time.strftime("%m-%d %H:%M:%S", time.localtime()) + "-> " + text)
 
+
 try:
-    requests.post(userInfo, headers=head).json()
+    requests.post(todayTask, headers=head).json()
     echo("每日登陆成功\n")
 except Exception:
     echo("登陆失败\n")
+
 
 def read(url, id, title):
     echo("开始阅读：" + title)
