@@ -1,8 +1,6 @@
 # coding=utf-8
 import requests
-
 import getinfo
-import mail
 
 
 def run(user, UA, cook):
@@ -32,9 +30,12 @@ def run(user, UA, cook):
     data = requests.post(url, json=info, headers=head).json()
     if data.get("errcode") == 0:
         print("打卡成功！")
+        # mail使用过程遭到QQ警告：传播垃圾/骚扰信息
+        '''
         if user.get("notice") == "true":
             print("正在发送邮件···")
             mail.send(user.get("email"), user.get("name"))
+        '''
         return "成功！"
 
     elif data.get("status") == 400:

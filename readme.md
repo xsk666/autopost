@@ -28,9 +28,9 @@
 
 ## 项目构成  
 下面简单介绍一下这个项目的构成  
->全部代码在[`main`](/main)文件夹中
+> 全部代码在[`main`](/main)文件夹中
 >> [`test`](/test)文件夹是我正在进行的测试(与现有代码无关)  
->> 主要是因为我太菜了，还懒，所以就放在一起了
+> > 主要是因为我太菜了，还懒，所以就放在一起了
 
 > 启动文件是[`index.py`](/main/index.py)  
 > 用户数据是[`users.json`](/main/users.json)  
@@ -38,7 +38,8 @@
 > 备用登陆模块是[`sign1.py`](/main/sign1.py)  
 > 获取打卡数据是[`getinfo.py`](/main/getinfo.py)  
 > 主程序是[`main.py`](/main/main.py)  
-> 推送通知[`mail.py`](/main/mail.py)  
+> 推送通知[`mail.py`](/main/mail.py)
+>> 长期使用mail模块推送打卡成功通知后，发现QQ会警告(传播垃圾/骚扰信息)并禁止用户使用邮箱授权码推送邮件
 ---  
 如果有`疑问`或`bug` 可以发[`issues`](https://github.com/xsk666/autopost/issues)  
 此项目还在持续更新中...
