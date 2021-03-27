@@ -49,14 +49,13 @@ def read(url, id, title):
     except Exception:
         res = "阅读失败"
     echo(res)
-    text = "| " + title + " | " + res + " |\n"
     sleeptime = random.randint(10, 20)
     echo("随机延迟 " + str(sleeptime) + " 秒\n")
     time.sleep(sleeptime)
-    return text
+    return res
 
 
-text = '|标题|结果|\n|:---|:---|\n'
+text = '| 标题 | 结果 |\n|:---|:---|\n'
 
 # 每日随机往期学习 1次
 try:
@@ -76,7 +75,8 @@ try:
     echo("->开始每日文化产品阅读")
     list = requests.post(cultureList, headers=head).json().get("lists").get("data")
     for i in range(0, 2):
-        text += read(cultureDetail, list[i].get("id"), list[i].get("title"))
+        read(cultureDetail, list[i].get("id"), list[i].get("title"))
+    text += "| 每日2篇文化产品阅读 |  执行成功 |\n"
     echo("->每日文化产品阅读完成\n")
 except Exception:
     echo("->获取文化产品列表失败")
@@ -87,6 +87,7 @@ try:
     list = requests.post(imageTextList, headers=head).json().get("lists").get("data")
     for i in range(0, 5):
         text += read(imageTextDetail, list[i].get("id"), list[i].get("title"))
+        text += "| 每日5篇文章阅读 |  执行成功 |\n"
     echo("->每日文章阅读完成\n")
 except Exception:
     echo("->获取文章列表失败")
