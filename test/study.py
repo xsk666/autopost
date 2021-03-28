@@ -37,9 +37,9 @@ def echo(text):
 
 try:
     requests.post(todayTask, headers=head).json()
-    echo("每日登陆成功\n")
+    echo("->每日登陆成功\n")
 except Exception:
-    echo("登陆失败\n")
+    echo("->登陆失败\n")
 
 
 def read(url, id, title):
