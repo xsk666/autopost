@@ -35,13 +35,6 @@ def echo(text):
     print(time.strftime("%m-%d %H:%M:%S", time.localtime()) + "-> " + text)
 
 
-try:
-    requests.post(todayTask, headers=head).json()
-    echo("->每日登陆成功\n")
-except Exception:
-    echo("->登陆失败\n")
-
-
 def read(url, id, title):
     echo("开始阅读：" + title)
     try:
@@ -49,14 +42,21 @@ def read(url, id, title):
     except Exception:
         res = "阅读失败"
     echo(res)
-    text = "| " + title + " | " + res + " |\n"
     sleeptime = random.randint(10, 20)
     echo("随机延迟 " + str(sleeptime) + " 秒\n")
     time.sleep(sleeptime)
-    return text
+    return True
 
 
-text = '|标题|结果|\n|:---|:---|\n'
+text = ''
+# 每日登陆
+try:
+    requests.post(todayTask, headers=head).json()
+    text += "每日登陆成功\n"
+    echo("每日登陆成功\n")
+except Exception:
+    text += "每日登陆成功\n"
+    echo("登陆失败\n")
 
 # 每日随机往期学习 1次
 try:
@@ -66,9 +66,11 @@ try:
     echo("随机选择：" + res.get("remark") + " " + res.get("title"))
     res = requests.get(learnList + str(res.get("id")), headers=head).json().get("list").get("list")
     res = res[random.randint(0, len(res))]
-    text += read(oldLearn, res.get("id"), res.get("title"))
+    if read(oldLearn, res.get("id"), res.get("title")):
+        text += "往期学习成功\n"
     echo("->往期学习成功\n")
 except Exception:
+    text += "往期学习失败\n"
     echo("->往期学习失败")
 
 # 每日cultureList任务 2次
@@ -76,9 +78,11 @@ try:
     echo("->开始每日文化产品阅读")
     list = requests.post(cultureList, headers=head).json().get("lists").get("data")
     for i in range(0, 2):
-        text += read(cultureDetail, list[i].get("id"), list[i].get("title"))
+        read(cultureDetail, list[i].get("id"), list[i].get("title"))
+    text += "每日文化产品阅读完成\n"
     echo("->每日文化产品阅读完成\n")
 except Exception:
+    text += "每日文化产品阅读失败\n"
     echo("->获取文化产品列表失败")
 
 # 每日imageTextList任务 5次
@@ -86,16 +90,20 @@ try:
     echo("->开始每日文章阅读")
     list = requests.post(imageTextList, headers=head).json().get("lists").get("data")
     for i in range(0, 5):
-        text += read(imageTextDetail, list[i].get("id"), list[i].get("title"))
+        read(imageTextDetail, list[i].get("id"), list[i].get("title"))
+    text += "每日文章阅读完成\n"
     echo("->每日文章阅读完成\n")
 except Exception:
+    text += "每日文章阅读失败\n"
     echo("->获取文章列表失败")
 
 try:
     res = requests.post(homeData, headers=head).json().get("list")
-    text += "|全省排名|" + str(res.get("province_rank")) + "|\n|组织排名|" + str(res.get("organization_rank")) + "|\n|累计积分|" + str(res.get("score")) + "|\n"
-    err = requests.get("https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=青年大学习每日任务完成啦&desp=" + text).json().get("errmsg")
-    if err == "success":
+    text += "\n全省排名：" + str(res.get("province_rank")) + "\n组织排名：" + str(res.get("organization_rank")) + "\n累计积分：" + str(res.get("score"))
+    err = requests.get("https://qmsg.zendee.cn/send/4d762a772660e5bd2c725d1969633815?msg=青年大学习每日任务完成啦\n\n" + text).json().get("success")
+    if err:
         echo("->通知发送成功")
+    else:
+        echo("->通知发送失败")
 except Exception:
     echo("->出错啦")

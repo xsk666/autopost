@@ -8,7 +8,7 @@ from shutil import rmtree as remove
 
 import main
 import sign
-from mail import wechat
+from mail import qq
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
@@ -22,7 +22,7 @@ if files.read() == time.strftime("%Y/%m/%d"):
 f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
-text = '| 姓名 | 结果 | \n|:---:|:---:| \n'
+text = '| 姓名 | 结果 |\n'
 for i in range(0, len(info)):
     if info[i].get("enable") == 'true':
         name = info[i].get("name")
@@ -43,7 +43,7 @@ for i in range(0, len(info)):
 print("打卡结束\n")
 
 try:
-    wechat(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except Exception:
     print("推送微信通知出错")
 

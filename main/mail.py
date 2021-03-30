@@ -7,9 +7,8 @@ from email.utils import formataddr
 import requests
 
 
-def wechat(text, desp):
-    return requests.get(
-        "https://sc.ftqq.com/SCU79675Tbfd23351bd3ed5501aae715beddfbdbf5e3a123f8fb98.send?text=" + text + "&desp=" + desp).json()
+def qq(text, desp):
+    return requests.get("https://qmsg.zendee.cn/send/4d762a772660e5bd2c725d1969633815?msg=" + text + "\n\n" + desp).json()
 
 
 def send(mail, username):
@@ -31,6 +30,6 @@ def send(mail, username):
         print("给 " + username + " 的邮件发送成功\n")
     except Exception:
         print("给 " + username + " 的邮件发送失败\n")
-        err = wechat('邮件发送失败', '用户邮箱:' + mail + '\n\n时间：' + time.strftime("%Y/%m/%d %H:%M")).get("errmsg")
+        err = qq('邮件发送失败', '用户邮箱:' + mail + '\n\n时间：' + time.strftime("%Y/%m/%d %H:%M")).get("errmsg")
         if err == "success":
             print("已通知开发者\n")
