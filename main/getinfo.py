@@ -48,7 +48,7 @@ def data(UA, cook):
     type8 = []
     type9 = []
 
-    for i in range(0, len(data)):
+    for i in range(len(data)):
         # 1：选择题
         # 3：填空题
         # 7：定位
@@ -86,7 +86,7 @@ def data(UA, cook):
             "answered": ''
         }
 
-    for i in range(0, len(type1)):
+    for i in range(len(type1)):
         que = ques()
         opt = type1[i].get("option_list")
 
@@ -95,7 +95,7 @@ def data(UA, cook):
             que["question_type"] = type1[i].get("question_type")
 
         else:
-            for ii in range(0, len(opt)):
+            for ii in range(len(opt)):
                 if str(opt[ii].get("optionid")) == type1[i].get("user_answer_optionid"):
                     que['questionid'] = opt[ii].get("questionid")
                     que["optionid"] = opt[ii].get("optionid")
@@ -108,7 +108,7 @@ def data(UA, cook):
             que["hide"] = true
         questions.append(que)
 
-    for i in range(0, len(type3)):
+    for i in range(len(type3)):
         que = ques()
         que['questionid'] = type3[i].get("questionid")
         que['question_type'] = type3[i].get("question_type")
@@ -117,7 +117,7 @@ def data(UA, cook):
         que["hide"] = true
         questions.append(que)
 
-    for i in range(0, len(type4)):
+    for i in range(len(type4)):
         que = ques()
         que['questionid'] = type4[i].get("questionid")
         que['question_type'] = type4[i].get("question_type")
@@ -128,7 +128,7 @@ def data(UA, cook):
             que["hide"] = true
         questions.append(que)
 
-    for i in range(0, len(type7)):
+    for i in range(len(type7)):
         que = ques()
         que['questionid'] = type7[i].get("questionid")
         que['content'] = type7[i].get("user_answer_content")
@@ -138,7 +138,7 @@ def data(UA, cook):
 
         questions.append(que)
 
-    for i in range(0, len(type8)):
+    for i in range(len(type8)):
         que = ques()
         que['questionid'] = type8[i].get("questionid")
         que['content'] = type8[i].get("user_answer_content")
@@ -148,7 +148,7 @@ def data(UA, cook):
         # que["answerid"] = type8[i].get("answerid")
         questions.append(que)
 
-    for i in range(0, len(type9)):
+    for i in range(len(type9)):
         que = ques()
         que['questionid'] = type9[i].get("questionid")
         que['question_type'] = type9[i].get("question_type")
@@ -159,7 +159,7 @@ def data(UA, cook):
         questions.append(que)
 
     # 选择排序法
-    for i in range(0, len(questions) - 1):
+    for i in range(len(questions) - 1):
         n = i
         for j in range(i + 1, len(questions)):
             if int(questions[n].get('questionid')) > int(questions[j].get("questionid")):
@@ -168,7 +168,7 @@ def data(UA, cook):
         questions[n] = questions[i]
         questions[i] = temp
 
-    for i in range(0, len(questions)):
+    for i in range(len(questions)):
         if questions[i].get("questionid") == 61838:
             del questions[i]["hide"]
         if str(questions[i].get('answered')) == "True":

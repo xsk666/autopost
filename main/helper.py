@@ -1,14 +1,7 @@
 # coding=utf-8
-import os
-import sys
 import time
-from shutil import rmtree as remove
 
 import requests
-
-import mail
-import main
-import sign
 
 hapi = "https://api.weishao.com.cn"
 api = 'lightapp.weishao.com.cn'
@@ -74,7 +67,7 @@ def off(lists, id):
     }
     x = 0
     res = requests.post(reporturl, json=data2, headers=head3).json().get("data").get("users")
-    for i in range(0, len(res)):
+    for i in range(len(res)):
         if res[i].get("is_report") == 0:
             info = {
                 "stucode": res[i].get("user_id"),
@@ -94,7 +87,7 @@ classes = ["3313", "3314"]  # ,"3320"]
 lists = []
 # 每个班未打卡的人数
 num = []
-for i in range(0, 2):
+for i in range(2):
     num.append(str(off(lists, classes[i])))
 print("共有" + str(len(lists)) + "人未打卡\n网工201 共" + num[0] + "人\n网工202 共" + num[1] + "人\n")  # 智能20  共" + num[2] + "人\n")
 '''

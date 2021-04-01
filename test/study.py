@@ -78,8 +78,7 @@ try:
     echo("->开始每日文化产品阅读")
     list = requests.post(cultureList, headers=head).json().get("lists").get("data")
     for i in range(0, 2):
-        if read(cultureDetail, list[i].get("id"), list[i].get("title")):
-            print(list[i].get("title"), "执行成功！")
+        read(cultureDetail, list[i].get("id"), list[i].get("title"))
     text += "每日文化产品阅读完成\n"
     echo("->每日文化产品阅读完成\n")
 except Exception:
@@ -91,8 +90,7 @@ try:
     echo("->开始每日文章阅读")
     list = requests.post(imageTextList, headers=head).json().get("lists").get("data")
     for i in range(0, 5):
-        if read(imageTextDetail, list[i].get("id"), list[i].get("title")):
-            print(list[i].get("title"), "执行成功！")
+        read(imageTextDetail, list[i].get("id"), list[i].get("title"))
     text += "每日文章阅读完成\n"
     echo("->每日文章阅读完成\n")
 except Exception:

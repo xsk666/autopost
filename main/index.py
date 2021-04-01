@@ -23,7 +23,7 @@ f2 = open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8')
 info = json.loads(f2.read())
 f2.close()
 text = '| 姓名 | 结果 |\n'
-for i in range(0, len(info)):
+for i in range(len(info)):
     if info[i].get("enable") == 'true':
         name = info[i].get("name")
         print("开始为 " + name + " 打卡...")
