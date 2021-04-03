@@ -48,8 +48,7 @@
 > 登陆模块是[`sign.py`](/main/sign.py)   
 > 备用登陆模块是[`sign1.py`](/main/sign1.py)  
 > 获取打卡数据是[`getinfo.py`](/main/getinfo.py)  
-> 主程序是[`main.py`](/main/main.py)  
-> 推送通知[`mail.py`](/main/mail.py)
+> 主程序是[`post.py`](/main/post.py)
 ---  
 如果有`疑问`或`bug` 可以发[`issues`](https://github.com/xsk666/autopost/issues)  
-此项目还在持续更新中...
+此项目还在持续维护中...

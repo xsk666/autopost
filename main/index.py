@@ -4,10 +4,14 @@ import os
 import random
 import sys
 import time
-
-import main
+import post
 import sign
-from mail import qq
+import requests
+
+
+def qq(text, desp):
+    return requests.get("https://qmsg.zendee.cn/send/4d762a772660e5bd2c725d1969633815?msg=" + text + "\n\n" + desp).json()
+
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
@@ -32,7 +36,7 @@ for i in range(len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + name + " | " + main.run(UA, cook) + " | \n"
+            text += "| " + name + " | " + post.run(UA, cook) + " | \n"
         except Exception:
             print("---为 " + name + " 打卡失败\n")
             text += "| " + name + " | 打卡失败 | \n"
@@ -41,8 +45,8 @@ print("打卡结束\n")
 
 try:
     qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
-except Exception:
-    print("推送微信通知出错")
+except requests.exceptions.ConnectionError:
+    print("推送qq通知出错")
 
 # 更新day.txt
 # 回到文件头部，清除重写
