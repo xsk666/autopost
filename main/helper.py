@@ -103,6 +103,4 @@ for i in range(0, len(lists)):
     except ConnectionError:
         print("---为 " + lists[i].get("stucode") + " 打卡失败")
 print("\n所有人打卡完成")
-if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-    remove(os.getcwd() + "/main/__pycache__/")
 '''

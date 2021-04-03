@@ -4,7 +4,6 @@ import os
 import random
 import sys
 import time
-from shutil import rmtree as remove
 
 import main
 import sign
@@ -14,8 +13,6 @@ print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if files.read() == time.strftime("%Y/%m/%d"):
     print("今日已打卡")
-    if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-        remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 
 # 读取用户列表
@@ -35,7 +32,7 @@ for i in range(len(info)):
         try:
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + name + " | " + main.run(info[i], UA, cook) + " | \n"
+            text += "| " + name + " | " + main.run(UA, cook) + " | \n"
         except Exception:
             print("---为 " + name + " 打卡失败\n")
             text += "| " + name + " | 打卡失败 | \n"
@@ -53,5 +50,3 @@ files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
-if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-    remove(os.getcwd() + "/main/__pycache__/")
