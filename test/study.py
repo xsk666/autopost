@@ -39,7 +39,7 @@ def read(url, id, title):
     echo("开始阅读：" + title)
     try:
         res = requests.post(url, json={"id": id}, headers=head).json().get("message")
-    except Exception:
+    except requests.exceptions.ConnectionError:
         res = "阅读失败"
     echo(res)
     sleeptime = random.randint(6, 12)
@@ -54,7 +54,7 @@ try:
     requests.post(todayTask, headers=head).json()
     text += "每日登陆成功\n"
     echo("每日登陆成功\n")
-except Exception:
+except requests.exceptions.ConnectionError:
     text += "每日登陆成功\n"
     echo("登陆失败\n")
 
@@ -69,7 +69,7 @@ try:
     if read(oldLearn, res.get("id"), res.get("title")):
         text += "往期学习成功\n"
     echo("->往期学习成功\n")
-except Exception:
+except requests.exceptions.ConnectionError:
     text += "往期学习失败\n"
     echo("->往期学习失败")
 
@@ -81,7 +81,7 @@ try:
         read(cultureDetail, list[i].get("id"), list[i].get("title"))
     text += "每日文化产品阅读完成\n"
     echo("->每日文化产品阅读完成\n")
-except Exception:
+except requests.exceptions.ConnectionError:
     text += "每日文化产品阅读失败\n"
     echo("->获取文化产品列表失败")
 
@@ -93,17 +93,17 @@ try:
         read(imageTextDetail, list[i].get("id"), list[i].get("title"))
     text += "每日文章阅读完成\n"
     echo("->每日文章阅读完成\n")
-except Exception:
+except requests.exceptions.ConnectionError:
     text += "每日文章阅读失败\n"
     echo("->获取文章列表失败")
 
 try:
     res = requests.post(homeData, headers=head).json().get("list")
     text += "\n全省排名：" + str(res.get("province_rank")) + "\n组织排名：" + str(res.get("organization_rank")) + "\n累计积分：" + str(res.get("score"))
-    true = requests.get("https://qmsg.zendee.cn/send/4d762a772660e5bd2c725d1969633815?msg=青年大学习每日任务完成啦\n\n" + text).json().get("success")
+    true = requests.get("https://qmsg.zendee.cn/send/11a4ed5a314c66df757718ba36fea180?msg=青年大学习每日任务完成啦\n\n" + text).json().get("success")
     if true:
         echo("->通知发送成功")
     else:
         echo("->通知发送失败")
-except Exception:
+except requests.exceptions.ConnectionError:
     echo("->出错啦")

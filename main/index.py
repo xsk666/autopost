@@ -10,7 +10,7 @@ import requests
 
 
 def qq(text, desp):
-    return requests.get("https://qmsg.zendee.cn/send/4d762a772660e5bd2c725d1969633815?msg=" + text + "\n\n" + desp).json()
+    return requests.get("https://qmsg.zendee.cn/send/11a4ed5a314c66df757718ba36fea180?msg=" + text + "\n\n" + desp).json()
 
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")

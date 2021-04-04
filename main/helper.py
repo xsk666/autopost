@@ -5,7 +5,7 @@ import requests
 
 hapi = "https://api.weishao.com.cn"
 api = 'lightapp.weishao.com.cn'
-dat = "schoolcode=chzu&username=203135&password=Aa336699&verifyValue=&verifyKey=203135_chzu&ssokey="
+dat = "schoolcode=chzu&username=203135&password=203135&verifyValue=&verifyKey=203135_chzu&ssokey="
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
 url = 'https://lightapp.weishao.com.cn/check/reportstatistics'
 try:
@@ -79,6 +79,7 @@ def off(lists, id):
     return x
 
 
+# 抓包获取的
 # 网工201:3313
 # 网工202:3314
 # 智能20 :3320
