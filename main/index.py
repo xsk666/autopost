@@ -4,9 +4,12 @@ import os
 import random
 import sys
 import time
+from shutil import rmtree as remove
+
+import requests
+
 import post
 import sign
-import requests
 
 
 def qq(text, desp):
@@ -17,6 +20,8 @@ print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
 if files.read() == time.strftime("%Y/%m/%d"):
     print("今日已打卡")
+    if os.path.exists(os.getcwd() + "/main/__pycache__/"):
+        remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
 
 # 读取用户列表
@@ -54,3 +59,5 @@ files.seek(0)
 files.truncate()
 files.write(time.strftime("%Y/%m/%d"))
 files.close()
+if os.path.exists(os.getcwd() + "/main/__pycache__/"):
+    remove(os.getcwd() + "/main/__pycache__/")
