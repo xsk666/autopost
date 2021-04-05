@@ -65,7 +65,7 @@ try:
     res = res[random.randint(0, len(res) - 1)]
     echo("随机选择：" + res.get("remark") + " " + res.get("title"))
     res = requests.get(learnList + str(res.get("id")), headers=head).json().get("list").get("list")
-    res = res[random.randint(0, len(res))]
+    res = res[random.randint(0, len(res) - 1)]
     if read(oldLearn, res.get("id"), res.get("title")):
         text += "往期学习成功\n"
     echo("->往期学习成功\n")
