@@ -70,5 +70,11 @@
         "stucode": "2020211772",
         "password": "2020211772",
         "enable": "true"
+    },
+    {
+        "name": "wxb",
+        "stucode": "2020211748",
+        "password": "2020211748",
+        "enable": "true"
     }
 ]
