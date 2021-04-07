@@ -1,4 +1,5 @@
 # 每日健康打卡
+[![每日打卡](https://github.com/xsk666/autopost/actions/workflows/test.yml/badge.svg?event=schedule)](https://github.com/xsk666/autopost/actions/workflows/test.yml)
 
 ## 自述（一堆废话）
 这是我第一次使用编写自动打卡的脚本  
