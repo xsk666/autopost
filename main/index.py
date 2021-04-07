@@ -13,7 +13,8 @@ import sign
 
 
 def qq(text, desp):
-    return requests.get("https://qmsg.zendee.cn/send/11a4ed5a314c66df757718ba36fea180?msg=" + text + "\n\n" + desp).json()
+    qmsg = "11a4ed5a314c66df757718ba36fea180"
+    return requests.get("https://qmsg.zendee.cn/send/" + qmsg + "?msg=" + text + "\n\n" + desp).json()
 
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
@@ -39,9 +40,13 @@ for i in range(len(info)):
         UA = num[random.randint(0, len(num) - 1)]
         f.close()
         try:
+            # 如果用户(users.json)填写含有schoolcode则设为对应学校
+            # 否则设为滁州学院（外校同学设置为自己学校domain编码）
+            if "schoolcode" not in info[i]:
+                info[i]['schoolcode'] = 'chzu'
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + name + " | " + post.run(UA, cook) + " | \n"
+            text += "| " + name + " | " + post.run(info[i], UA, cook) + " | \n"
         except Exception:
             print("---为 " + name + " 打卡失败\n")
             text += "| " + name + " | 打卡失败 | \n"

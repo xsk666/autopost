@@ -3,9 +3,11 @@ import requests
 
 
 def login(user, UA):
+    # 学号，密码，UA
     stucode = str(user.get("stucode"))
     password = str(user.get("password"))
-    # 学号，密码，UA
+    schoolcode = str(user.get("schoolcode"))
+
     api = 'api.weishao.com.cn'
     hapi = 'https://api.weishao.com.cn'
     # 分析协议得出的
@@ -15,7 +17,7 @@ def login(user, UA):
     # 得到初始cookie
     cook = requests.get(url).headers['set-cookie']
     # 提交的个人数据
-    dat = "schoolcode=chzu&username=" + stucode + "&password=" + password + "&verifyValue=&verifyKey=" + stucode + "_chzu&ssokey="
+    dat = "schoolcode=" + schoolcode + "&username=" + stucode + "&password=" + password + "&verifyValue=&verifyKey=" + stucode + "_" + schoolcode + "&ssokey="
     # 头部要携带提交的数据的长度
     head1 = {
         'Host': api,

@@ -5,7 +5,7 @@ import time
 import requests
 
 
-def data(UA, cook):
+def data(user, UA, cook):
     """
      获取处理后的数据
     :param UA 传入的UA
@@ -14,7 +14,8 @@ def data(UA, cook):
     """
     # 只需要得到cookie即可获取信息
     # 获取 昨天/最新 的打卡信息
-    url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=chzu&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
+    schoolcode = str(user.get("schoolcode"))
+    url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=' + schoolcode + '&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
     head = {
         'Host': 'yq.weishao.com.cn',
         'User-Agent': UA,

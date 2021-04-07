@@ -1,11 +1,12 @@
 # coding=utf-8
 import requests
+
 import getinfo
 
 
-def run(UA, cook):
+def run(user, UA, cook):
     # 读取个人提交信息
-    info = getinfo.data(UA, cook)
+    info = getinfo.data(user, UA, cook)
     if info == 0:
         print("今日打卡已完成，自动打卡取消\n")
         return "已完成"
