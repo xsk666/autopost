@@ -90,7 +90,7 @@ lists = []
 num = []
 for i in range(2):
     num.append(str(off(lists, classes[i])))
-print("共有" + str(len(lists)) + "人未打卡\n网工201 共" + num[0] + "人\n网工202 共" + num[1] + "人\n")  # 智能20  共" + num[2] + "人\n")
+print("共有 {} 人未打卡\n网工201 共 {} 人\n网工202 共 {} 人\n".format(len(lists), num[0], num[1]))
 '''
 if len(lists) == 0:
     print("所有人打卡完成")
