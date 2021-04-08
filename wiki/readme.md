@@ -3,10 +3,11 @@
 1. 首先打开自动打卡项目的主界面->[自动打卡](https://github.com/xsk666/autopost)  
    ![项目的主界面](img/1.png)
    在右上角可以找到Star和Fork（如图）  
-   (如果你 很喜欢/感激 此项目，可以给一个Star(感恩))
+   (如果你***很喜欢***此项目，给一个***Star***吧(球球了))
 
-2. 点击Fork，然后等待网页跳转完成
-3. 修改main文件夹里的[`users.json`](/main/users.json)
+2. 点击***Fork***，然后等待网页跳转完成
+
+3. 修改main文件夹里的[`users.json`](../main/users.json)
    ![修改json](img/2.png)  
    先将原来的信息删除，然后按照下面的格式重新填写此文件
 
@@ -38,12 +39,13 @@
    在KEY选项卡得到并复制key
    ![key](img/3.png)
 
-5. 修改index.py 打开[`index.py`](/main/index.py)   
+5. 修改index.py  
+   打开[`index.py`](../main/index.py)   
    可以在函数名为qq(第16行)内看到qmsg变量  
    将其修改为你的key即可
 
 6. 修改test.yml  
-   打开[test.yml](/.github/workflows/test.yml)
+   打开[test.yml](../.github/workflows/test.yml)
    删除30行之后的内容
    ![test.yml](./img/4.png)
 
@@ -51,22 +53,42 @@
 7. 删除一些东西
    ![图片](img/5.png)
 
-* 删除[test](/test)文件夹
-* 删除[test2.yml](/.github/workflows/test2.yml)
-* 删除[helper.py](/main/helper.py)
+* 删除[test](../test)文件夹
+* 删除[test2.yml](../.github/workflows/test2.yml)
+* 删除[helper.py](../main/helper.py)
 
 8. 开启Actions  
    点击绿色的按钮
    ![Actions](./img/6.png)  
    按下图顺序开启workflow即可
    ![Actions](./img/7.png)  
-   按下图顺序进行一次手动触发打卡，然后刷新一下
+   按下图顺序进行一次手动触发打卡  
+   然后刷新一下，稍等actions运行  
    ![测试](./img/8.png)
-    * 下图为正在进行的样子
-      ![正在进行](./img/9.png)
-    * 下图为成功的样子  
-      ![成功](./img/10.png)
-    * 下图为错误的样子  
-      ![错误](./img/11.png)
-    * 点进actions即可查看具体日志
-      ![日志](./img/12.png)
+   * 下图为正在进行的样子
+     ![正在进行](./img/9.png)
+   * 下图为成功的样子  
+     ![成功](./img/10.png)
+   * 下图为错误的样子  
+     ![错误](./img/11.png)
+   * 点进actions即可查看具体日志
+     ![日志](./img/12.png)
+
+9. 关于定时  
+   打开[test.yml](../.github/workflows/test.yml)  
+   可以看到第六行如下
+   ```
+   - cron: '59 15 * * *'
+   ```
+   建议不要调整该时间，此时间已是很合理的时间   
+   (因为github免费用户的actions是需要排队的)  
+   经过长时间测试，此定时器具体运行时间为凌晨00:30左右
+
+   自定义定时方法如下  
+   ![定时](./img/cron.png)
+
+### 写在最后
+
+此部署教程已经非常详细了  
+还有问题的话，麻烦百度搜索[`github基本操作`](https://www.baidu.com/s?ie=UTF-8&wd=github%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C)  
+最后再求求star，感恩
