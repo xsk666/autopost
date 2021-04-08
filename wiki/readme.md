@@ -52,10 +52,9 @@
 
 7. 删除一些东西
    ![图片](img/5.png)
-
-* 删除[test](../test)文件夹
-* 删除[test2.yml](../.github/workflows/test2.yml)
-* 删除[helper.py](../main/helper.py)
+   * 删除[test](../test)文件夹
+   * 删除[test2.yml](../.github/workflows/test2.yml)
+   * 删除[helper.py](../main/helper.py)
 
 8. 开启Actions  
    点击绿色的按钮
@@ -89,6 +88,7 @@
 
 ### 写在最后
 
-此部署教程已经非常详细了  
-还有问题的话，麻烦百度搜索[`github基本操作`](https://www.baidu.com/s?ie=UTF-8&wd=github%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C)  
+此部署教程已经非常详细了   
+跟着此教程来的话，不会有任何问题  
+如果还有问题的话，麻烦百度搜索[`github基本操作`](https://www.baidu.com/s?ie=UTF-8&wd=github%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C)  
 最后再求求star，感恩
