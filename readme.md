@@ -2,18 +2,20 @@
 [![每日打卡](https://github.com/xsk666/autopost/actions/workflows/test.yml/badge.svg?event=schedule)](https://github.com/xsk666/autopost/actions/workflows/test.yml)
 
 ## 自述（一堆废话）
+
 这是我第一次使用编写自动打卡的脚本  
 我选择了`python`  
 这也是我用`python`写的第一个项目   
 并将它放在`github actions`上每日自动运行  
 这也是我第一次使用`git`  
-第一次编写文档
-我选择了`Markdown`   
+第一次编写文档 我选择了`Markdown`   
 为了这个项目我花了很多时间学习  
-恳请各位大佬给个 ***star***  
-***fork*** 后修改[`users.json`](/main/users.json)  
-然后开启[`github actions`](https://github.com/xsk666/autopost/actions)就可以使用啦  
+恳请各位大佬给个 ***star***
 
+## 部署教程
+
+详见[`wiki`](https://github.com/xsk666/autopost/wiki )  
+或者项目内的`course`内的[`readme.md`](/course/readme.md)
 
 ## 使用范围
 
@@ -40,7 +42,8 @@
 ## 项目构成
 
 下面简单介绍一下这个项目的构成
-> 全部代码在[`main`](/main)文件夹中
+> 全部代码在[`main`](/main)文件夹中  
+> 部署文档在[`course`](/course)
 >> [`test`](/test)文件夹是我正在进行的测试(与现有代码无关)  
 > > 主要是因为我太菜了，还懒，所以就放在一起了
 
