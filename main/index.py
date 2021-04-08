@@ -46,7 +46,7 @@ for i in range(len(info)):
                 info[i]['schoolcode'] = 'chzu'
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            text += "| " + name + " | " + post.run(info[i], UA, cook) + " | \n"
+            text += "| " + name + " | " + post.run(info[i]['schoolcode'], UA, cook) + " | \n"
         except Exception:
             print("---为 " + name + " 打卡失败\n")
             text += "| " + name + " | 打卡失败 | \n"

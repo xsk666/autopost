@@ -4,9 +4,9 @@ import requests
 import getinfo
 
 
-def run(user, UA, cook):
+def run(schoolcode, UA, cook):
     # 读取个人提交信息
-    info = getinfo.data(user, UA, cook)
+    info = getinfo.data(schoolcode, UA, cook)
     if info == 0:
         print("今日打卡已完成，自动打卡取消\n")
         return "已完成"
