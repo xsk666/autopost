@@ -130,7 +130,7 @@
 		   ```
 		  domain之后的`chzu`即为滁州学院的domain编码
 
-       找到[`index.py`](../main/index.py)第45行，修改即可
+	   找到[`index.py`](../main/index.py)第45行，修改即可
 	   ```
 	   # 如果用户(users.json)填写含有schoolcode则设为对应学校
 	   # 否则设为滁州学院（外校同学设置为自己学校domain编码）
@@ -142,19 +142,19 @@
 		* 示例
 	   ```
 	   {
-		    "name": "姓名",
-		    "stucode": "学号",
-		    "password": "密码",
-		    "schoolcode": "chzu",
-		    "enable": "true"
+			 "name": "姓名",
+		  "stucode": "学号",
+		  "password": "密码",
+		  "schoolcode": "chzu",
+		  "enable": "true"
 	   }
-		```
+	   ```
 
 ---
 
 ### 写在最后
 
-此部署教程已经非常详细了   
+此部署教程已经非常非常详细了   
 跟着此教程来的话，不会有任何问题  
 如果还有问题的话，麻烦百度搜索[`github基本操作`](https://www.baidu.com/s?ie=UTF-8&wd=github%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C)  
-最后再求求star，感恩
+最后再求求star，谢谢啦
