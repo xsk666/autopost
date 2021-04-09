@@ -142,7 +142,7 @@
 		* 示例
 	   ```
 	   {
-			 "name": "姓名",
+		  "name": "姓名",
 		  "stucode": "学号",
 		  "password": "密码",
 		  "schoolcode": "chzu",
