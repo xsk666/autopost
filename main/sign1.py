@@ -3,8 +3,8 @@ import requests
 
 
 # 若sign失效则启用sign1
-# 此登录 时间较长故暂时弃用
-# 但此登录绝对稳定可用
+# 此登录模块 时间较长故暂时弃用保存
+# 但此登录理论绝对稳定可用
 
 
 def login(user, UA):
