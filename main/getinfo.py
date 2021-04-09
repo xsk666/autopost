@@ -1,5 +1,4 @@
 # coding=utf-8
-import json
 import time
 
 import requests
@@ -24,14 +23,14 @@ def data(schoolcode, UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    info = json.loads(requests.get(url1, headers=head).text).get("data")[0]
+    info = requests.get(url1, headers=head).json().get("data")[0]
     if info.get("createtime") == time.strftime("%Y-%m-%d"):
         return 0
     private = info['private_id']
     activityid = str(info["activityid"])
     url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=' + activityid + '&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着最新的的打卡记录
-    data = json.loads(requests.get(url2, headers=head).text).get("data")
+    data = requests.get(url2, headers=head).json().get("data")
     true = data.get('already_answered')  # 存放true
     false = data.get("can_reanswer")  # 存放false
     data = data.get("question_list")
@@ -101,7 +100,6 @@ def data(schoolcode, UA, cook):
                     que["optionid"] = opt[ii].get("optionid")
                     que['optiontitle'] = opt[ii].get("title")
                     que["question_type"] = type1[i].get("question_type")
-                    # que["answerid"] = type1[i].get("answerid")
                     break
         que["answered"] = type1[i].get("user_answer_this_question")
         if que["answered"] == false:
@@ -123,7 +121,6 @@ def data(schoolcode, UA, cook):
         que['question_type'] = type4[i].get("question_type")
         que['content'] = type4[i].get("user_answer_content")
         que["answered"] = type4[i].get("user_answer_this_question")
-        # que["answerid"] = type4[i].get("answerid")
         if que["answered"] == false:
             que["hide"] = true
         questions.append(que)
@@ -134,8 +131,6 @@ def data(schoolcode, UA, cook):
         que['content'] = type7[i].get("user_answer_content")
         que['question_type'] = type7[i].get("question_type")
         que["answered"] = type7[i].get("user_answer_this_question")
-        # que["answerid"] = type7[i].get("answerid")
-
         questions.append(que)
 
     for i in range(len(type8)):
@@ -145,7 +140,6 @@ def data(schoolcode, UA, cook):
         que['question_type'] = type8[i].get("question_type")
         que['answered'] = type8[i].get("user_answer_this_question")
         que["hide"] = true
-        # que["answerid"] = type8[i].get("answerid")
         questions.append(que)
 
     for i in range(len(type9)):
@@ -154,7 +148,6 @@ def data(schoolcode, UA, cook):
         que['question_type'] = type9[i].get("question_type")
         que['content'] = type9[i].get("user_answer_content")
         que['answered'] = type9[i].get("user_answer_this_question")
-        # que["answerid"] = type9[i].get("answerid")
         que["hide"] = true
         questions.append(que)
 
@@ -184,7 +177,7 @@ def data(schoolcode, UA, cook):
         'Accept-Language': 'zh-CN, zh;q = 0.9',
         'Cookie': cook,
     }
-    userinfo = json.loads(requests.get("https://yq.weishao.com.cn/userInfo", headers=head4).text).get("data")
+    userinfo = requests.get("https://yq.weishao.com.cn/userInfo", headers=head4).json().get("data")
     return {
         "sch_code": userinfo.get("schcode"),
         "stu_code": userinfo.get("stucode"),

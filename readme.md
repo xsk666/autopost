@@ -1,6 +1,7 @@
 # 每日健康打卡
 [![每日打卡](https://github.com/xsk666/autopost/actions/workflows/test.yml/badge.svg?event=schedule)](https://github.com/xsk666/autopost/actions/workflows/test.yml)
 
+
 ## 自述（一堆废话）
 
 这是我第一次使用编写自动打卡的脚本  
@@ -52,7 +53,6 @@
 > 启动文件是[`index.py`](/main/index.py)  
 > 用户数据是[`users.json`](/main/users.json)  
 > 登陆模块是[`sign.py`](/main/sign.py)   
-> 备用登陆模块是[`sign1.py`](/main/sign1.py)  
 > 获取打卡数据是[`getinfo.py`](/main/getinfo.py)  
 > 打卡程序是[`post.py`](/main/post.py)
 ---  

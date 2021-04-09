@@ -15,6 +15,15 @@ def login(user, UA):
     url = api + "/login?source=" + oauth
     # 得到初始cookie
     cook = requests.get(url).headers['set-cookie']
+
+    '''
+       # 此处为备用登录，若登录失效，可将12-17行注释，然后启用此处再尝试登录
+       # 从url开始，进行两次302跳转获取初始cookie和真正的登陆链接
+       url = requests.get('https://yq.weishao.com.cn/check/questionnaire', allow_redirects=False).headers['Location']
+       # 得到初始cookie
+       cook = requests.get(url, allow_redirects=False).headers['set-cookie']
+    '''
+
     # 提交的个人数据
     dat = "schoolcode=" + schoolcode + "&username=" + stucode + "&password=" + password + "&verifyValue=&verifyKey=" + stucode + "_" + schoolcode + "&ssokey="
     # 头部要携带提交的数据的长度
