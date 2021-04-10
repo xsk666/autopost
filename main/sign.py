@@ -9,9 +9,9 @@ def login(user, UA):
     :return : 传回登陆成功的cookie
     """
     # 学号，密码，学校编码，UA
-    stucode = str(user.get("stucode"))
-    password = str(user.get("password"))
-    schoolcode = str(user.get("schoolcode"))
+    stucode = user.get("stucode")
+    password = user.get("password")
+    schoolcode = user.get("schoolcode")
 
     api = 'https://api.weishao.com.cn'
     # 分析协议得出的
