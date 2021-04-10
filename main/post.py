@@ -5,6 +5,12 @@ import getinfo
 
 
 def run(schoolcode, UA, cook):
+    """获取处理后的数据
+        :param schoolcode:学号编码
+        :param UA:传入的UA
+        :param cook:传入的cookie
+        :return : 打卡结果
+        """
     # 读取个人提交信息
     info = getinfo.data(schoolcode, UA, cook)
     if info == 0:

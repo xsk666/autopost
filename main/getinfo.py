@@ -5,11 +5,11 @@ import requests
 
 
 def data(schoolcode, UA, cook):
-    """
-     获取处理后的数据
-    :param UA 传入的UA
-    :param cook: 传入的cookie
-    :return:处理后的数据
+    """获取处理后的数据
+    :param schoolcode:学号编码
+    :param UA:传入的UA
+    :param cook:传入的cookie
+    :return : 昨天/上一次的打卡数据
     """
     # 只需要得到cookie即可获取信息
     # 获取 昨天/最新 的打卡信息

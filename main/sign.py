@@ -3,6 +3,11 @@ import requests
 
 
 def login(user, UA):
+    """获取处理后的数据
+    :param user:用户信息
+    :param UA:传入的UA
+    :return : 传回登陆成功的cookie
+    """
     # 学号，密码，学校编码，UA
     stucode = str(user.get("stucode"))
     password = str(user.get("password"))
