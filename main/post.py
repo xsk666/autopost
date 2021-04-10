@@ -6,11 +6,11 @@ import getinfo
 
 def run(schoolcode, UA, cook):
     """获取处理后的数据
-        :param schoolcode:学号编码
-        :param UA:传入的UA
-        :param cook:传入的cookie
-        :return : 打卡结果
-        """
+    :param schoolcode:学号编码
+    :param UA:传入的UA
+    :param cook:传入的cookie
+    :return :打卡结果
+    """
     # 读取个人提交信息
     info = getinfo.data(schoolcode, UA, cook)
     if info == 0:
@@ -39,6 +39,7 @@ def run(schoolcode, UA, cook):
         print("打卡成功！")
         return "成功！"
 
+    # 下面这条if基本上没有运行不到，在上面已经出现了这种情况了
     elif data.get("status") == 400:
         print("今日打卡已完成，自动打卡取消\n")
         return "已完成"
