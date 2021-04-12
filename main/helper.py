@@ -68,7 +68,7 @@ head = {
 }
 list = requests.post(url1, json=data, headers=head).json().get("data").get("tree")
 # 推送结果
-tui = "每日打卡督促完成啦\n\n|    班级    | 结果 |\n"
+tui = "每日打卡督促完成啦\n\n|    班级    |  结果  |\n"
 for i in range(1):  # 0, len(list)):
     classes = list[i]
     data2 = {"type": "org", "identity": "", "para": {"organization_id": classes['unionid'], "organization_path_str": "3311,3312,3313,3314,3320"},
@@ -84,24 +84,24 @@ for i in range(1):  # 0, len(list)):
             if user.get("is_report") == 0:
                 # 添加未打卡学生信息到列表
                 nodaka.append({"stucode": user.get("user_id"), "password": user.get("user_id"), 'schoolcode': 'chzu'})
-                # 3人换一行，x用于计数
                 text += user.get("user_name") + " | "
+                # 3人换一行，x用于计数
                 x += 1
-                if x == 3:
-                    text += "\n| "
-                    x = 0
+                if x % 3 == 0:
+                    text += "\n|"
         print(text)
         txt += text
 
         res = "失败"
         if requests.get("https://qmsg.zendee.cn/group/" + qmsg + "?msg=" + txt + "&qq=" + group[0]).json().get("success"):
             res = "成功"
-        tui += "| {} | {} |\n".format(classes.get("tree_name"), res)
+        tui += "| {} |  {}  |\n".format(classes.get("tree_name"), res)
 
 requests.get("https://qmsg.zendee.cn/send/" + qmsg + "?msg=" + tui).json()
 if len(nodaka) == 0:
     print("所有人打卡完成")
     sys.exit()
+
 # 下面是自动打卡模块
 # for i in range(0, len(nodaka)):
 #     print("开始为 " + nodaka[i].get("stucode") + " 打卡")
