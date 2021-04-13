@@ -2,6 +2,13 @@
 
 [![每日打卡](https://github.com/xsk666/autopost/actions/workflows/test.yml/badge.svg?event=schedule)](https://github.com/xsk666/autopost/actions/workflows/test.yml)
 
+## 部署教程
+
+此部署教程已非常非常详细  
+部署时请务必将原有的个人信息(key和users.json)删除！  
+详见[`wiki`](https://github.com/xsk666/autopost/wiki)  
+或者项目内的`course`内的[`readme.md`](/course/readme.md)
+
 ## 自述（一堆废话）
 
 这是我第一次使用编写自动打卡的脚本  
@@ -25,11 +32,6 @@
 
 (只要是基于`微哨`的应该都可以)
 
-## 部署教程
-
-此部署教程已非常非常详细  
-详见[`wiki`](https://github.com/xsk666/autopost/wiki)  
-或者项目内的`course`内的[`readme.md`](/course/readme.md)
 
 
 ## 项目构成
