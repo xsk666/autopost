@@ -58,7 +58,6 @@ try:
     qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except requests.exceptions.ConnectionError:
     print("推送qq通知出错")
-
 # 更新day.txt
 # 回到文件头部，清除重写
 day.seek(0)

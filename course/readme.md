@@ -20,13 +20,13 @@
       {
          "name": "姓名",
          "stucode": "学号",
-         "password": "密码（可以和学号一样）",
+         "password": "密码",
          "enable": "true"
       },
       {
          "name": "姓名2",
          "stucode": "学号",
-         "password": "密码（可以和学号一样）",
+         "password": "密码",
          "enable": "true"
       }
    ]

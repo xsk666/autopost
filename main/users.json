@@ -26,7 +26,7 @@
     {
         "name": "hyd",
         "stucode": "2020211716",
-        "password": "2020211716",
+        "password": "246814.c",
         "enable": "true"
     },
     {
@@ -38,13 +38,13 @@
     {
         "name": "zyp",
         "stucode": "2020211779",
-        "password": "2020211779",
+        "password": "293923",
         "enable": "true"
     },
     {
         "name": "shx",
         "stucode": "2020211741",
-        "password": "2020211741",
+        "password": "152622",
         "enable": "true"
     },
     {
@@ -62,19 +62,19 @@
     {
         "name": "zxm",
         "stucode": "2020214216",
-        "password": "2020214216",
+        "password": "174920",
         "enable": "true"
     },
     {
         "name": "zyy",
         "stucode": "2020211772",
-        "password": "2020211772",
+        "password": "233429",
         "enable": "true"
     },
     {
         "name": "wxb",
         "stucode": "2020211748",
-        "password": "2020211748",
+        "password": "134256",
         "enable": "true"
     }
 ]
