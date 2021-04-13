@@ -31,15 +31,6 @@
 详见[`wiki`](https://github.com/xsk666/autopost/wiki)  
 或者项目内的`course`内的[`readme.md`](/course/readme.md)
 
-## 注意事项
-
-在issues里有同学提到个人隐私信息的事  
-在这里简单说明一下：  
-因为打卡平台在`部分学校`只需要知道学校和学号即可登录  
-（***在滁州学院是这样，别的学校不一定***）  
-此项目[`users.json`](/main/users.json)里面每个人的***password***都是多余的（可以随便乱填）  
-可以自己试试-><https://yq.weishao.com.cn/check/questionnaire>  
-所以不需要担心个人隐私（担心也没啥用）
 
 ## 项目构成
 

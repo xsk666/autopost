@@ -65,7 +65,6 @@
    ![图片](img/5.png)
 	* 删除[test](../test)文件夹
 	* 删除[test2.yml](../.github/workflows/test2.yml)
-	* 删除[helper.py](../main/helper.py)
 
 ---
 
