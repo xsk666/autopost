@@ -1,7 +1,7 @@
 # 这里是自动打卡项目的部署教程
 
 1. 首先打开自动打卡项目的主界面->[自动打卡](https://github.com/xsk666/autopost)  
-   ![项目的主界面](img/1.png)
+   ![项目的主界面](img/项目界面.png)
    在右上角可以找到Star和Fork（如图）  
    (如果你***很喜欢***此项目，给一个***Star***吧(球球了))
 
@@ -12,7 +12,7 @@
 ---
 
 3. 修改main文件夹里的[`users.json`](../main/users.json)
-   ![修改json](img/2.png)  
+   ![修改json](img/用户数据.png)  
    先将原来的信息删除，然后按照下面的格式修改此文件
 
    ```
@@ -43,7 +43,7 @@
    网站传送->https://qmsg.zendee.cn/me.html#/login  
    登陆后选择一个qmsg机器人，并添加其为QQ好友  
    在KEY选项卡得到并复制key
-   ![key](img/3.png)
+   ![key](img/qmsg.png)
 
 ---
 
@@ -57,20 +57,20 @@
 
 6. 开启Actions  
    点击绿色的按钮
-   ![Actions](./img/6.png)  
+   ![Actions](img/Actions.png)  
    按下图顺序开启workflow即可
-   ![Actions](./img/7.png)  
+   ![Actions](img/开启workflow.png)  
    按下图顺序进行一次手动触发打卡  
    然后刷新一下，稍等actions运行  
-   ![测试](./img/8.png)
+   ![测试](img/Run Workflow.png)
 	* 下图为正在进行的样子
-	  ![正在进行](./img/9.png)
+	  ![正在进行](img/running.png)
 	* 下图为成功的样子  
-	  ![成功](./img/10.png)
+	  ![成功](img/run ok.png)
 	* 下图为错误的样子  
-	  ![错误](./img/11.png)
+	  ![错误](img/run failed.png)
 	* 点进actions即可查看具体日志
-	  ![日志](./img/12.png)
+	  ![日志](img/日志.png)
 
 ---
 
@@ -91,9 +91,9 @@
 
 8. 关于外校
 	1. 首先确定你的学校打卡部分是不是与以下图片***相似***  
-	   ![图标](./img/13.jpg)  
-	   ![图标](./img/14.jpg)  
-	   ![图标](./img/15.jpg)
+	   ![图标](img/健康打卡图标.jpg)  
+	   ![图标](img/健康打卡历史.jpg)  
+	   ![图标](img/健康打卡问卷.jpg)
 	
 	* 如果***相似***，那么恭喜你可以正常使用此项目  
 	  你的学校与我的学校（滁州学院）使用的是同一种打卡
