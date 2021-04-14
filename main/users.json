@@ -1,80 +1,14 @@
 [
     {
-        "name": "xsk",
-        "stucode": "2020211760",
-        "password": "xu20021016",
+        "name": "姓名",
+        "stucode": "学号",
+        "password": "密码",
         "enable": "true"
     },
     {
-        "name": "rcy",
-        "stucode": "2020211738",
-        "password": "214818",
-        "enable": "true"
-    },
-    {
-        "name": "yk",
-        "stucode": "2020211765",
-        "password": "210850",
-        "enable": "true"
-    },
-    {
-        "name": "zl",
-        "stucode": "2020211777",
-        "password": "242238",
-        "enable": "true"
-    },
-    {
-        "name": "hyd",
-        "stucode": "2020211716",
-        "password": "246814.c",
-        "enable": "true"
-    },
-    {
-        "name": "xhh",
-        "stucode": "2020211756",
-        "password": "050219",
-        "enable": "true"
-    },
-    {
-        "name": "zyp",
-        "stucode": "2020211779",
-        "password": "293923",
-        "enable": "true"
-    },
-    {
-        "name": "shx",
-        "stucode": "2020211741",
-        "password": "152622",
-        "enable": "true"
-    },
-    {
-        "name": "wzy",
-        "stucode": "2020211753",
-        "password": "wzywb122188",
-        "enable": "true"
-    },
-    {
-        "name": "yjx",
-        "stucode": "2020211764",
-        "password": "yjx2002",
-        "enable": "true"
-    },
-    {
-        "name": "zxm",
-        "stucode": "2020214216",
-        "password": "174920",
-        "enable": "true"
-    },
-    {
-        "name": "zyy",
-        "stucode": "2020211772",
-        "password": "233429",
-        "enable": "true"
-    },
-    {
-        "name": "wxb",
-        "stucode": "2020211748",
-        "password": "134256",
+        "name": "姓名2",
+        "stucode": "学号",
+        "password": "密码",
         "enable": "true"
     }
 ]

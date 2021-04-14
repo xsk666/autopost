@@ -2,7 +2,6 @@
 import json
 import os
 import random
-import sys
 import time
 from shutil import rmtree as remove
 
@@ -13,17 +12,11 @@ import sign
 
 
 def qq(text, desp):
-    qmsg = "11a4ed5a314c66df757718ba36fea180"
+    qmsg = "key"
     return requests.get("https://qmsg.zendee.cn/send/" + qmsg + "?msg=" + text + "\n\n" + desp).json()
 
 
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
-day = open(os.getcwd() + "/main/day.txt", 'r+')
-if day.read() == time.strftime("%Y/%m/%d"):
-    print("今日已打卡")
-    if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-        remove(os.getcwd() + "/main/__pycache__/")
-    sys.exit()
 
 # 读取用户列表
 with open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8') as file:
@@ -41,6 +34,7 @@ for i in range(len(info)):
         try:
             # 如果用户(users.json)填写含有schoolcode则设为对应学校
             # 否则设为滁州学院（外校同学设置为自己学校domain编码）
+            # domain编码详见wiki或者course文件夹内的readme
             if "schoolcode" not in info[i]:
                 info[i]['schoolcode'] = 'chzu'
             # 获取用户cookie
@@ -58,11 +52,6 @@ try:
     qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except requests.exceptions.ConnectionError:
     print("推送qq通知出错")
-# 更新day.txt
-# 回到文件头部，清除重写
-day.seek(0)
-day.truncate()
-day.write(time.strftime("%Y/%m/%d"))
-day.close()
+
 if os.path.exists(os.getcwd() + "/main/__pycache__/"):
     remove(os.getcwd() + "/main/__pycache__/")

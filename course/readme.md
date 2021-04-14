@@ -49,26 +49,13 @@
 
 5. 修改index.py  
    打开[`index.py`](../main/index.py)   
-   可以在函数名为qq(第16行)内看到qmsg变量  
+   可以在函数名为qq(第15行)内看到qmsg变量  
    将其修改为你的key即可
 
----
-
-6. 修改test.yml  
-   打开[test.yml](../.github/workflows/test.yml)
-   删除30行之后的内容
-   ![test.yml](./img/4.png)
 
 ---
 
-7. 删除一些东西
-   ![图片](img/5.png)
-	* 删除[test](../test)文件夹
-	* 删除[test2.yml](../.github/workflows/test2.yml)
-
----
-
-8. 开启Actions  
+6. 开启Actions  
    点击绿色的按钮
    ![Actions](./img/6.png)  
    按下图顺序开启workflow即可
@@ -87,7 +74,7 @@
 
 ---
 
-9. 关于定时  
+7. 关于定时  
    打开[test.yml](../.github/workflows/test.yml)  
    可以看到第六行如下
    ```
@@ -102,7 +89,7 @@
 
 ---
 
-10. 关于外校
+8. 关于外校
 	1. 首先确定你的学校打卡部分是不是与以下图片***相似***  
 	   ![图标](./img/13.jpg)  
 	   ![图标](./img/14.jpg)  
