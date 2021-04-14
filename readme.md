@@ -4,7 +4,6 @@
 
 ## 部署教程
 
-此部署教程已非常非常详细  
 部署时请务必将原有的个人信息(key和users.json)删除！  
 详见[`wiki`](https://github.com/xsk666/autopost/wiki)  
 或者项目内的`course`内的[`readme.md`](/course/readme.md)

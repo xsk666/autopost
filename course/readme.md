@@ -62,13 +62,13 @@
    ![Actions](img/开启workflow.png)  
    按下图顺序进行一次手动触发打卡  
    然后刷新一下，稍等actions运行  
-   ![测试](img/Run Workflow.png)
+   ![测试](img/RunWorkflow.png)
 	* 下图为正在进行的样子
 	  ![正在进行](img/running.png)
 	* 下图为成功的样子  
-	  ![成功](img/run ok.png)
+	  ![成功](img/runok.png)
 	* 下图为错误的样子  
-	  ![错误](img/run failed.png)
+	  ![错误](img/runfailed.png)
 	* 点进actions即可查看具体日志
 	  ![日志](img/日志.png)
 
