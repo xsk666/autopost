@@ -39,8 +39,6 @@
 简单介绍一下这个项目的构成
 > 全部代码在[`main`](/main)文件夹中  
 > 部署文档在[`course`](/course)
->> [`test`](/test)文件夹是我正在进行的测试(与现有代码无关)  
-> > 主要是因为我太菜了，还懒，所以就放在一起了
 
 > 启动文件是[`index.py`](/main/index.py)  
 > 用户数据是[`users.json`](/main/users.json)  
