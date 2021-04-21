@@ -1,6 +1,10 @@
 # 每日健康打卡
 
 [![每日打卡](https://github.com/xsk666/autopost/actions/workflows/test.yml/badge.svg?event=schedule)](https://github.com/xsk666/autopost/actions/workflows/test.yml)
+<img alt="last commit" src="https://img.shields.io/github/last-commit/xsk666/autopost">
+<img alt="Issues" src="https://img.shields.io/github/issues-closed/xsk666/autopost">
+<img alt="Fork" src="https://img.shields.io/github/forks/xsk666/autopost">
+<img alt="Star" src="https://img.shields.io/github/stars/xsk666/autopost">
 
 ## 部署教程
 
@@ -31,8 +35,6 @@
 
 (只要是基于`微哨`的应该都可以)
 
-
-
 ## 项目构成
 
 简单介绍一下这个项目的构成
@@ -46,4 +48,4 @@
 > 打卡程序是[`post.py`](/main/post.py)
 ---  
 如果有`疑问`或`bug` 可以发[`issues`](https://github.com/xsk666/autopost/issues)  
-此项目还在持续维护中...
+此项目还在持续维护中..."# mypost" 
