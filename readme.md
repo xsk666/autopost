@@ -6,6 +6,8 @@
 <img alt="Fork" src="https://img.shields.io/github/forks/xsk666/autopost">
 <img alt="Star" src="https://img.shields.io/github/stars/xsk666/autopost">
 
+![表情包](course/img/daka.jpeg)
+
 ## 部署教程
 
 部署时请务必将原有的个人信息(key和users.json)删除！  
@@ -48,4 +50,4 @@
 > 打卡程序是[`post.py`](/main/post.py)
 ---  
 如果有`疑问`或`bug` 可以发[`issues`](https://github.com/xsk666/autopost/issues)  
-此项目还在持续维护中..."# mypost" 
+此项目还在持续维护中...
