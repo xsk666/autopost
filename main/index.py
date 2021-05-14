@@ -39,7 +39,7 @@ for i in range(len(info)):
                 info[i]['schoolcode'] = 'chzu'
             # 获取用户cookie
             cook = sign.login(info[i], UA)
-            response = post.run(info[i]['schoolcode'], UA, cook)
+            response = post.run(info[i], UA, cook)
         except Exception:
             print("---为 " + name + " 打卡失败\n")
             response = "打卡失败"

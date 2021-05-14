@@ -4,16 +4,18 @@ import time
 import requests
 
 
-def data(schoolcode, UA, cook):
+def data(studata, UA, cook):
     """获取处理后的数据
-    :param schoolcode:学号编码
+    :param studata:学生信息
     :param UA:传入的UA
     :param cook:传入的cookie
     :return : 昨天/上一次的打卡数据
     """
     # 只需要得到cookie即可获取信息
     # 获取 昨天/最新 的打卡信息
-    url1 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code=' + schoolcode + '&stu_code=2020211760&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
+    schoolcode = studata.get("schoolcode")
+    stucode = studata.get("stucode")
+    url1 = f'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionNaireList?sch_code={schoolcode}&stu_code={stucode}&authorityid=0&type=3&pagenum=1&pagesize=1000&stu_range=999&searchkey='
     head = {
         'Host': 'yq.weishao.com.cn',
         'User-Agent': UA,
@@ -28,7 +30,7 @@ def data(schoolcode, UA, cook):
         return 0
     private = info['private_id']
     activityid = str(info["activityid"])
-    url2 = 'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code=chzu&stu_code=2020211760&activityid=' + activityid + '&can_repeat=1&page_from=my&private_id=' + private
+    url2 = f'https://yq.weishao.com.cn/api/questionnaire/questionnaire/getQuestionDetail?sch_code={schoolcode}&stu_code={schoolcode}&activityid=' + activityid + '&can_repeat=1&page_from=my&private_id=' + private
     # data里面存放着最新的的打卡记录
     data = requests.get(url2, headers=head).json().get("data")
     true = data.get('already_answered')  # 存放true
