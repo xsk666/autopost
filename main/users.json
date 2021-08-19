@@ -1,14 +1,14 @@
 [
     {
-        "name": "姓名",
-        "stucode": "学号",
-        "password": "密码",
-        "enable": "true"
+        "name": "xsk",
+        "stucode": "2020211760",
+        "password": "xu20021016",
+        "schoolcode": "chzu"
     },
     {
         "name": "姓名2",
         "stucode": "学号",
         "password": "密码",
-        "enable": "true"
+        "schoolcode": "学校代码"
     }
 ]

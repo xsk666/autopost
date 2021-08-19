@@ -12,46 +12,37 @@ import sign
 
 
 def qq(text, desp):
-    qmsg = "key"
+    qmsg = "你的key"
     return requests.get("https://qmsg.zendee.cn/send/" + qmsg + "?msg=" + text + "\n\n" + desp).json()
 
 
-print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
-
-# 读取用户列表
-with open(os.getcwd() + "/main/users.json", 'r', encoding='utf-8') as file:
-    info = json.loads(file.read())
-
-text = '| 姓名 |  结果  |\n'
-for i in range(len(info)):
-    if info[i].get("enable") == 'true':
-        name = info[i].get("name")
+if __name__ == '__main__':
+    print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
+    # 读取用户列表
+    with open(os.getcwd() + "/users.json", 'r', encoding='utf-8') as file:
+        allinfo = json.loads(file.read())
+    with open(os.getcwd() + "/ua.txt", 'r', encoding='utf-8') as file:
+        allUA = file.read().split("\n")
+    text = '| 姓名 |  结果  |'
+    for item in allinfo:
+        name = item.get("name")
         print("开始为 " + name + " 打卡...")
         # 随机UA
-        with open(os.getcwd() + "/main/ua.txt", 'r', encoding='utf-8') as file:
-            num = file.read().split("\n")
-        UA = num[random.randint(0, len(num) - 1)]
+        UA = random.choice(allUA)
         try:
-            # 如果用户(users.json)填写含有schoolcode则设为对应学校
-            # 否则设为滁州学院（外校同学设置为自己学校domain编码）
-            # domain编码详见wiki或者course文件夹内的readme
-            if "schoolcode" not in info[i]:
-                info[i]['schoolcode'] = 'chzu'
             # 获取用户cookie
-            cook = sign.login(info[i], UA)
-            response = post.run(info[i], UA, cook)
-        except Exception:
-            print("---为 " + name + " 打卡失败\n")
+            cook = sign.login(item, UA)
+            # 获取返回的打卡结果
+            response = post.run(item, UA, cook)
+        except Exception as e:
+            print("---为 " + name + " 打卡失败\n" + str(e))
             response = "打卡失败"
         # 为推送填写打卡信息
-        text += "| {} | {} | \n".format(name, response)
+        text += f" \n| {name} | {response} |"
 
-print("打卡结束\n")
+    print("打卡结束\n")
 
-try:
-    qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
-except requests.exceptions.ConnectionError:
-    print("推送qq通知出错")
-
-if os.path.exists(os.getcwd() + "/main/__pycache__/"):
-    remove(os.getcwd() + "/main/__pycache__/")
+    try:
+        qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+    except requests.exceptions.ConnectionError:
+        print("推送qq通知出错")

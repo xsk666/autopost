@@ -38,12 +38,6 @@ def run(studata, UA, cook):
     if data.get("errcode") == 0:
         print("打卡成功！")
         return "成功！"
-
-    # 下面这条if基本上没有运行不到，在上面已经出现了这种情况了
-    elif data.get("status") == 400:
-        print("今日打卡已完成，自动打卡取消\n")
-        return "已完成"
-
     else:
         print("---未知的errcode\n" + str(data) + "\n")
         return "未知结果"
