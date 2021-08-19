@@ -19,9 +19,12 @@ def qq(text, desp):
 if __name__ == '__main__':
     print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
     # 读取用户列表
-    with open(os.getcwd() + "/users.json", 'r', encoding='utf-8') as file:
+    path = os.getcwd()
+    if path.find("main") == -1:
+        path += "/main"
+    with open(path + "/users.json", 'r', encoding='utf-8') as file:
         allinfo = json.loads(file.read())
-    with open(os.getcwd() + "/ua.txt", 'r', encoding='utf-8') as file:
+    with open(path + "/ua.txt", 'r', encoding='utf-8') as file:
         allUA = file.read().split("\n")
     text = '| 姓名 |  结果  |'
     for item in allinfo:
