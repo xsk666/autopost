@@ -39,6 +39,6 @@ if __name__ == '__main__':
     print("打卡结束\n")
 
     try:
-        qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text + "\n[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
+        qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text)
     except requests.exceptions.ConnectionError:
         print("推送qq通知出错")
