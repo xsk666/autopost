@@ -1,10 +1,7 @@
 # coding=utf-8
 import json
 import os
-import random
 import time
-from shutil import rmtree as remove
-
 import requests
 
 import post
@@ -22,21 +19,17 @@ if __name__ == '__main__':
     path = os.getcwd()
     if path.find("main") == -1:
         path += "/main"
-    with open(path + "/users.json", 'r', encoding='utf-8') as file:
-        allinfo = json.loads(file.read())
-    with open(path + "/ua.txt", 'r', encoding='utf-8') as file:
-        allUA = file.read().split("\n")
+    allinfo = json.load(open(path + "/users.json",encoding="utf-8"))
     text = '| 姓名 |  结果  |'
     for item in allinfo:
         name = item.get("name")
         print("开始为 " + name + " 打卡...")
-        # 随机UA
-        UA = random.choice(allUA)
+
         try:
             # 获取用户cookie
-            cook = sign.login(item, UA)
+            cook = sign.login(item)
             # 获取返回的打卡结果
-            response = post.run(item, UA, cook)
+            response = post.run(item, cook)
         except Exception as e:
             print("---为 " + name + " 打卡失败\n" + str(e))
             response = "打卡失败"

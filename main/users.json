@@ -1,11 +1,10 @@
 [
     {
-        "name": "xsk",
-        "stucode": "2020211760",
-        "password": "xu20021016",
-        "schoolcode": "chzu"
-    },
-    {
+        "name": "姓名1",
+        "stucode": "学号",
+        "password": "密码",
+        "schoolcode": "学校代码"
+    },{
         "name": "姓名2",
         "stucode": "学号",
         "password": "密码",
