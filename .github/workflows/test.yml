@@ -25,5 +25,7 @@ jobs:
         run: |
           python -m pip install requests
       - name: 运行自动打卡脚本
+        env:
+          USERS: ${{ secrets.USERS }}
         run: |
           python3 ./main/index.py
