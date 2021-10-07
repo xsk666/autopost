@@ -9,9 +9,8 @@ import sign
 
 
 def qq(text, desp):
-    qmsg = "你的key"
+    qmsg = os.environ.get('QMSG-APIKEY', '')
     return requests.get("https://qmsg.zendee.cn/send/" + qmsg + "?msg=" + text + "\n\n" + desp).json()
-
 
 if __name__ == '__main__':
     print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
@@ -19,7 +18,13 @@ if __name__ == '__main__':
     path = os.getcwd()
     if path.find("main") == -1:
         path += "/main"
-    allinfo = json.load(open(path + "/users.json",encoding="utf-8"))
+    userstr = os.environ.get('USERS', '')
+    if len(userstr.strip()) == 0:
+        userstr = open(path + "/users.json",encoding="utf-8").read()
+        print("USERS 环境变量未设置,请前往 Settings / Secrets 添加 Repository Secret")
+    else:
+        print("USERS 环境变量已设置")
+    allinfo = json.loads(userstr)
     text = '| 姓名 |  结果  |'
     for item in allinfo:
         name = item.get("name")
