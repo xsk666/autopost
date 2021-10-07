@@ -26,6 +26,7 @@ jobs:
           python -m pip install requests
       - name: 运行自动打卡脚本
         env:
+          QMSG-APIKEY: ${{ secrets.QMSG-APIKEY }}
           USERS: ${{ secrets.USERS }}
         run: |
           python3 ./main/index.py
