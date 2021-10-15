@@ -1,6 +1,6 @@
 # coding=utf-8
 import requests
-
+from urllib.parse import quote
 
 def login(user, retry=False):
     """获取处理后的数据
@@ -23,7 +23,7 @@ def login(user, retry=False):
         session = requests.Session()
         cook = session.get(url).headers['set-cookie']
         # 提交的个人数据
-        dat = "schoolcode=" + schoolcode + "&username=" + stucode + "&password=" + password + "&verifyValue=&verifyKey=" + stucode + "_" + schoolcode + "&ssokey="
+        dat = "schoolcode=" + schoolcode + "&username=" + stucode + "&password=" + quote(password, "utf-8") + "&verifyValue=&verifyKey=" + stucode + "_" + schoolcode + "&ssokey="
         head = {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Cookie': cook,
