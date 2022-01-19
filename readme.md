@@ -8,8 +8,8 @@
 
 ![表情包](course/img/daka.jpeg)
 
-## 部署教程
-
+## 使用教程/部署教程
+***脚本会自动获取昨天的打卡信息进行提交***   
 部署时请修改原有的个人信息(key和users.json)  
 详见[`wiki`](https://github.com/xsk666/autopost/wiki)  
 或者项目内的`course`内的[`readme.md`](/course/readme.md)

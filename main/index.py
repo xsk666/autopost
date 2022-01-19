@@ -40,5 +40,5 @@ if __name__ == '__main__':
 
     try:
         qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text)
-    except requests.exceptions.ConnectionError:
+    except:
         print("推送qq通知出错")

@@ -12,11 +12,13 @@ def login(user, retry=False):
     stucode = user.get("stucode")
     password = user.get("password")
     schoolcode = user.get("schoolcode")
-
+    if schoolcode is None:
+        print("未填写schoolcode")
+        return "配置错误"
     api = 'https://api.weishao.com.cn'
     # 分析协议得出的
     oauth = '/oauth/authorize?client_id=pqZ3wGM07i8R9mR3&redirect_uri=https%3A%2F%2Fyq.weishao.com.cn%2Fcheck%2Fquestionnaire&response_type=code&scope=base_api&state=ruijie'
-    # 直接获取登陆链接的cookie（该链接极大可能是固定的）
+    # 直接获取登陆链接的cookie（该链接是固定的）
     url = api + "/login?source=" + oauth
     try:
         # 得到初始cookie
@@ -37,7 +39,10 @@ def login(user, retry=False):
     except requests.exceptions.ConnectionError:
         print("网络错误")
         return "网络错误"
-    except KeyError:
+    except requests.exceptions.MissingSchema:
+        print("密码错误")
+        return "密码错误"
+    except:
         if retry:
             print(name + " 登录错误")
             return "登录错误"
