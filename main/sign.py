@@ -1,6 +1,6 @@
 # coding=utf-8
-import requests
-from urllib.parse import quote
+import requests, re
+
 
 def login(user, retry=False):
     """获取处理后的数据
@@ -12,39 +12,38 @@ def login(user, retry=False):
     stucode = user.get("stucode")
     password = user.get("password")
     schoolcode = user.get("schoolcode")
-    if schoolcode is None:
-        print("未填写schoolcode")
-        return "配置错误"
-    api = 'https://api.weishao.com.cn'
-    # 分析协议得出的
-    oauth = '/oauth/authorize?client_id=pqZ3wGM07i8R9mR3&redirect_uri=https%3A%2F%2Fyq.weishao.com.cn%2Fcheck%2Fquestionnaire&response_type=code&scope=base_api&state=ruijie'
-    # 直接获取登陆链接的cookie（该链接是固定的）
-    url = api + "/login?source=" + oauth
+
     try:
-        # 得到初始cookie
-        session = requests.Session()
-        cook = session.get(url).headers['set-cookie']
-        # 提交的个人数据
-        dat = "schoolcode=" + schoolcode + "&username=" + stucode + "&password=" + quote(password, "utf-8") + "&verifyValue=&verifyKey=" + stucode + "_" + schoolcode + "&ssokey="
+        url = "https://xiaoyuan.weishao.com.cn"
+        csrf_html = requests.get(f"{url}/login?path=%2Fhome")
+        csrf = re.compile('(?<=value=")(.+)(?=">)').search(csrf_html.text)[0]
+        data = {"domain": schoolcode, "stuNo": stucode, "pwd": password, "vc": "", "_csrf": csrf}
+        cook = "locale=zh; " + re.compile("xiaoyuan=(.+)(?=; P)").search(csrf_html.headers['set-cookie'])[0]
         head = {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
             'Cookie': cook,
         }
-        # 提交个人信息（模拟登录）
-        session.post(url, data=dat, headers=head)
-        url1 = session.get(api + oauth, headers=head, allow_redirects=False).headers['Location']
-        # 登陆成功，获取登陆cookie
-        cook = session.get(url1, headers=head, allow_redirects=False).headers['set-cookie']
-        return cook
-    except requests.exceptions.ConnectionError:
-        print("网络错误")
+        res = requests.post(url + "/login/api/login", json=data, headers=head)
+        errmsg = res.json().get("errmsg")
+        if errmsg.find("错误") != -1:
+            print(name + " " + errmsg)
+            return "登录错误"
+        cook2 = res.headers['set-cookie'].split(";")[0]
+
+        head2 = {
+            "Cookie": cook + "; " + cook2
+        }
+        res = requests.get(url + "/link?type=1&id=aa13361944680028&url=https%3A%2F%2Fyq.weishao.com.cn%2Fcheck%2Fquestionnaire", headers=head2,
+                           allow_redirects=False).headers["location"]
+        cook3 = requests.get(res, allow_redirects=False).headers['set-cookie'].split(";")[0] + ";" + cook2
+        return cook3
+    except requests.exceptions.ConnectionError as e:
+        print("网络错误",e)
         return "网络错误"
-    except requests.exceptions.MissingSchema:
-        print("密码错误")
-        return "密码错误"
-    except:
+    except KeyError:
         if retry:
             print(name + " 登录错误")
             return "登录错误"
         else:
-            return login(user, True)
+            return login(user,True)

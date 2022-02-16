@@ -3,7 +3,6 @@ import json
 import os
 import time
 import requests
-
 import post
 import sign
 
@@ -14,7 +13,8 @@ def qq(text, desp):
 
 
 if __name__ == '__main__':
-    print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
+    date = time.strftime("%Y/%m/%d")
+    print("开始 " + date + " 的打卡任务\n")
     # 读取用户列表
     path = os.getcwd()
     if path.find("main") == -1:
@@ -28,6 +28,9 @@ if __name__ == '__main__':
         try:
             # 获取用户cookie
             cook = sign.login(item)
+            # print(cook)
+            if cook.find("错误") != -1:
+                raise Exception(cook)
             # 获取返回的打卡结果
             response = post.run(item, cook)
         except Exception as e:
@@ -39,6 +42,6 @@ if __name__ == '__main__':
     print("打卡结束\n")
 
     try:
-        qq(time.strftime("%Y年%m月%d日") + "\n自动打卡任务已完成", text)
+        qq(date + "\n自动打卡任务已完成", text)
     except:
         print("推送qq通知出错")
