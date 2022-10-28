@@ -31,7 +31,7 @@
 现可以直接在滁州学院使用  
 ***(外校使用的话，需要修改一些文件。详见[`wiki`](https://github.com/xsk666/autopost/wiki))***  
 (外校同学若需要可以发issues联系我)  
-(项目中含有个人数据，在***fork***之后请及时修改为你的数据)  
+(xmut的同学可以去看看[本校的项目](https://github.com/umbrella34/daka))  
 具体校园列表请看[`学校列表.txt`](/学校列表.txt)   
 此学校列表由此得来-><https://api.weishao.com.cn/login/api/school>
 

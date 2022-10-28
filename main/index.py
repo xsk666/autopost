@@ -23,19 +23,20 @@ if __name__ == '__main__':
     text = '| 姓名 |  结果  |'
     for item in allinfo:
         name = item.get("name")
-        print("开始为 " + name + " 打卡...")
-
-        try:
-            # 获取用户cookie
-            cook = sign.login(item)
-            # print(cook)
-            if cook.find("错误") != -1:
-                raise Exception(cook)
-            # 获取返回的打卡结果
-            response = post.run(item, cook)
-        except Exception as e:
-            print("---为 " + name + " 打卡失败\n" + str(e))
-            response = "打卡失败"
+        for i in range(4):
+            print("开始为 " + name + " 打卡..." + ("" if i == 0 else "重试-"+str(i)))
+            try:
+                # 获取用户cookie
+                cook = sign.login(item)
+                # print(cook)
+                if cook.find("错误") != -1:
+                    raise Exception(cook)
+                # 获取返回的打卡结果
+                response = post.run(item, cook)
+                break
+            except Exception as e:
+                print("---为 " + name + " 打卡失败\n---" + str(e))
+                response = "打卡失败"
         # 为推送填写打卡信息
         text += f" \n| {name} | {response} |"
 
