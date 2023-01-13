@@ -5,6 +5,15 @@
 <img alt="Issues" src="https://img.shields.io/github/issues-closed/xsk666/autopost">
 <img alt="Fork" src="https://img.shields.io/github/forks/xsk666/autopost">
 <img alt="Star" src="https://img.shields.io/github/stars/xsk666/autopost">
+## 停止更新
+此项目自`2021/01/19`起开始更新，至今已经维护近两年。
+自`2022/12/08`起，学校不再进行健康打卡，故此项目停止更新。
+`2022/01/19`会将项目转为**Public Archive**，在此之前如有疑问，可以发issue或者[qq联系](https://github.com/xsk666/autopost/issues/6#issuecomment-837532863)
+
+![停止健康打卡](course/img/停止健康打卡.png)
+
+疫情紧随我们三年有余，希望以后的生活越来越好。
+非常感谢各位的fork和star。
 
 ![表情包](course/img/daka.jpeg)
 
